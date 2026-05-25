@@ -813,15 +813,23 @@ tbody td {
   border: 1px solid var(--border);
   background-color: #000;
   transition: box-shadow 0.3s;
+  
+  /* Opcional: Le ponemos un ancho máximo para que no se vea gigantesco en pantallas muy anchas */
+  max-width: 800px; 
+  margin: 0 auto; /* Esto centra el video en la pantalla */
 }
 
 .video-wrapper:hover {
   box-shadow: 0 8px 32px rgba(0, 229, 255, 0.15);
 }
 
-.video-wrapper video {
+/* Cambiamos "video" por "iframe" */
+.video-wrapper iframe {
   width: 100%;
+  /* Mantiene la proporción perfecta de YouTube automáticamente */
+  aspect-ratio: 16 / 9; 
   display: block;
+  border: none;
 }
 
 .audio-section {
