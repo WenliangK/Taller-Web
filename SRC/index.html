@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PixelVault - Tu tienda de videojuegos online. Encuentra los mejores títulos para todas las plataformas." />
+  <meta name="keywords" content="videojuegos, tienda, PS5, Xbox, Nintendo, PC, gaming" />
+  <meta name="author" content="PixelVault Store" />
+  <title>PixelVault | Tienda de Videojuegos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a href="#inicio" class="logo">Pixel<span>Vault</span></a>
+      <ul class="nav-links">
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#tabla">Precios</a></li>
+        <li><a href="#multimedia">Multimedia</a></li>
+        <li><a href="#formulario" class="nav-cta">Contáctanos</a></li>
+      </ul>
+
+      <button class="menu" id="menu" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#tabla">Precios</a>
+      <a href="#multimedia">Multimedia</a>
+      <a href="#formulario">Contáctanos</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <div class="hero">
+      <span class="hero-badge">🎮 NUEVA TEMPORADA 2025</span>
+      <h1>Tu próximo juego favorito<br />te está esperando en <span class="highlight">PixelVault</span></h1>
+      <p>Explora nuestro catálogo con los mejores títulos para PS5, Xbox, Nintendo y PC. Precios imbatibles y envío rápido.</p>
+      <div class="hero-buttons">
+        <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
+        <a href="#formulario" class="btn-secondary">Más información</a>
+      </div>
+    </div>
+
+    <section id="catalogo">
+      <div class="section-header">
+        <span class="section-label">// NUESTROS JUEGOS</span>
+        <h2>Catálogo Destacado</h2>
+        <p>Selección curada con los títulos más populares de la temporada.</p>
+      </div>
+
+      <div class="games-grid">
+
+        <div class="game-card">
+          <img
+            src="https://static.wikia.nocookie.net/logopedia/images/4/49/Counter-Strike_2_%28Icon%29.png/revision/latest?cb=20230330015359"
+            alt="CS2"
+            loading="lazy"
+          />
+          <div class="game-card-body">
+            <p class="game-platform">PC/STEAM</p>
+            <h3>Counter-Strike 2</h3>
+            <p>Durante las dos últimas décadas, Counter‑Strike ha proporcionado una experiencia competitiva de primer nivel para los millones de jugadores de todo el mundo que contribuyeron a darle forma. Ahora el próximo capítulo en la historia de CS está a punto de comenzar. Hablamos de Counter‑Strike 2.</p>
+            <div class="game-footer">
+              <span class="game-price">S/. 58</span>
+              <button class="btn-card">Agregar 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <img
+            src="data:image/webp;base64,UklGRv4DAABXRUJQVlA4TPIDAAAvoIAmAO/mKpIkxaqaucfw9SQ8T8+/CIZpGw7aSHIk91zgj/Ip5J920EaSI7lnPvFH+DTSXs9/QM6HTvVGCcJ2lv/RC2cgRAJqMRJ8rxarswoIgZquBQr2DiH+BRUEwc5CcPys3AiEKbEYBoFQ4BCDIOhAKkBhkapCR0EQggJCoFACgUAEBZRARKRHBlSAiqX4oYZVf17zRS+X44lUIxPLhqAYxFge9TkWTwIb5zMcVrNaYBAKFDLKpZQ94u8HGgKlgYX4TAyW/djnRRTENNqYoe4xRxy/HIGLQA3KUNFVASFQGAJF/spQLbMmd/et63kjFAiVEAiBQlEEqoQggQgIAqFC0fqJfxgoFOzxM2aWE8cegiIIAkFRERACMWilEIQW7yx+H4X3/y8g0Lo93trhkLBtmyk3m9S2wjqs7diqbdtm6sap3ca2a9vmn1nMmW/PzMbJ0eyJ6L9rRZKkKFMSRkZt9un8goxGm60ACybbCIPzTu7jhwkwb6eAX9f7jxKg8n1kfp9jb2WtMpV7n8EDbP6dLQai3vpvbaVfjOFVpjL7qZ/4zofVbp4wB14GIzhKMCevfc8379ZMcoM5AEzROSc3mFNMAOehTDQF0J8r4NMXHHHxJC0zZrt7CKq2gqD/AEMd4FsuyR4YwwqqoPoQx8xxo/Ec1R+cgovmUQqOY8bO8ids4R7QvklTLJtp4sHEaprhzWvZIYS0LUGtNLhGgxdmCVfRT38LBcTzRms/k5fWNUupCm6pXUg74tKWnkV8JbalOpXoqnx8yYlbmKckeQS34SslkfgEeoZJkjCZf8TpvW212vXVYHP122eYTJGw7Wers8+0T3xTkZqWrqfAMC09PtTbS1tP3OtCxx8rzcA1Xc80oYLwr6DZyxMjJsMcFv4cf2RaVEQXN5hDjj7LoNwXYEYCMB2pEjEcugin//TJwQF+ICecek47r3dbNIcpH6GffRqoZrnKwysjIFbLFhVo38DZ+5HzvUk28eTn/EH6++cuMHt+/P3DMWl2JuH8itiwabNOSdFz+zwwc7dxzHk4Io8RTtlGB1ekLhM6gxEGyWgdDj0lHfGAixvawO5guvgytC5bqMO3Ro7Sg86+aIO6gemq+qJ13fqEdMrXd+yJtldLMC16cMzZaV0x8YsVGr5d9op4lvOOIBKPmf+I2VVAshp+z8qd+2HuWEV/rn9991bQirqOY4ov1+hPdHEmzII4CmP8f5vQn3g49Ce+OpzoqmBqRi+rCr0HqCVOtOnJYk5iwERxIr4gPerpRUuWyoqBsrLgRiEQ5eZ89JjKwjPPGOkm32VIH7A74DlTk5LRJt6j4B9j2VwKxh+UNQ4oAw=="
+            alt="Minecraft"
+            loading="lazy"
+          />
+          <div class="game-card-body">
+            <p class="game-platform">Xbox Series X</p>
+            <h3>Minecraft</h3>
+            <p>Minecraft es un juego formado por bloques, criaturas y comunidades. La elección es tuya: sobrevivir a la noche o crear una obra de arte.</p>
+            <div class="game-footer">
+              <span class="game-price">S/. 110</span>
+              <button class="btn-card">Agregar 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <img
+            src="https://mario.wiki.gallery/images/thumb/9/90/Mario_Party_2021_Logo_.png/250px-Mario_Party_2021_Logo_.png"
+            alt="Mario Party"
+            loading="lazy"
+          />
+          <div class="game-card-body">
+            <p class="game-platform">Nintendo Switch</p>
+            <h3>Mario Party</h3>
+            <p>El Fiesta de Mario La serie es una serie de juegos de fiesta presentando a los personajes de la Super Mario franquicia, en el que cuatro personajes controlados por humanos o computadoras compiten en un juego de mesa intercalado con minijuegos. La serie es conocida por sus elementos de juego de fiesta, incluidos los modos multijugador a menudo impredecibles que permiten jugar con hasta cuatro y, en Fiesta de Mario 7'El caso, ocho jugadores humanos.</p>
+            <div class="game-footer">
+              <span class="game-price">S/. 150</span>
+              <button class="btn-card">Agregar 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <img
+            src="https://image.api.playstation.com/vulcan/ap/rnd/202207/2509/85p2Dwh5iDhUzRKe40QeNYh3.png"
+            alt="Resident Evil 4 Remake"
+            loading="lazy"
+          />
+          <div class="game-card-body">
+            <p class="game-platform">PC / Steam</p>
+            <h3>Resident Evil 4 - Remake</h3>
+            <p>Resident Evil 4 — conocido en Japón como Biohazard 4 — es un videojuego de acción-aventura de disparos en tercera persona de terror y supervivencia desarrollado y publicado por Capcom para la GameCube.</p>
+            <div class="game-footer">
+              <span class="game-price">S/. 170</span>
+              <button class="btn-card">Agregar 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <img
+            src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/976730/header.jpg?t=1774466074"
+            alt="Halo: The Master Chief Collection"
+            loading="lazy"
+          />
+          <div class="game-card-body">
+            <p class="game-platform">PS5 / Xbox</p>
+            <h3>Halo: The Master Chief Collection</h3>
+            <p>Halo: La colección del jefe maestro es un compilación de tirador en primera persona juegos desarrollados por 343 Industrias, Cierta afinidad y Saber interactivo y publicado por Estudios de juegos de Xbox. Incluye los primeros seis juegos principales del Halo franquicia lanzada entre 2001 y 2012, desarrollada originalmente por Bungie y 343 Industrias.</p>
+            <div class="game-footer">
+              <span class="game-price">S/. 200</span>
+              <button class="btn-card">Agregar 🛒</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-card">
+          <img
+            src="https://static.wikia.nocookie.net/esgta/images/1/1b/Car%C3%A1tula_GTA_V.jpg/revision/latest/scale-to-width-down/1200?cb=20130402191528"
+            alt="GTAV"
+            loading="lazy"
+          />
+          <div class="game-card-body">
+            <p class="game-platform">PC</p>
+            <h3>GTA V Online</h3>
+            <p>Experimenta GTA Online, un universo en línea dinámico y en constante evolución para hasta 30 jugadores, donde puedes pasar de ser un estafador callejero a convertirte en el capo de tu propio imperio criminal. Disfrute de nuevas actualizaciones y mejoras de vehículos de alto rendimiento como Career Builder, así como todas las actualizaciones, expansiones y contenido del juego GTA Online lanzados desde el lanzamiento, listos para disfrutar solos o con amigos. Realice atrevidos atracos cooperativos, participe en carreras de riesgo llenas de adrenalina, compita en modos adversarios únicos o pase el rato en espacios sociales que incluyen clubes nocturnos, salas de juegos, fiestas en áticos, reuniones de autos y mucho más.</p>
+            <div class="game-footer">
+              <span class="game-price">S/. 160</span>
+              <button class="btn-card">Agregar 🛒</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="full-divider" />
+
+    <section id="tabla">
+      <div class="section-header">
+        <span class="section-label">// PRECIOS Y STOCK</span>
+        <h2>Comparativa Completa</h2>
+        <p>Revisa disponibilidad, plataforma y precio de todos nuestros títulos.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <caption>Tabla actualizada — Temporada 2026 · Precios en Soles (S/.)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Título</th>
+              <th scope="col">Género</th>
+              <th scope="col">Plataforma</th>
+              <th scope="col">Año</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Counter-Strike 2</strong></td>
+              <td>Shooter / FPS</td>
+              <td><span class="badge badge-pc">PC/SETAM</span></td>
+              <td>2023</td>
+              <td>S/. 58</td>
+              <td><span class="stock-ok">✔ Disponible</span></td>
+            </tr>
+            <tr>
+              <td><strong>Minecraft</strong></td>
+              <td>Aventuras</td>
+              <td><span class="badge badge-xbox">Xbox</span></td>
+              <td>2009</td>
+              <td>S/. 179</td>
+              <td><span class="stock-ok">✔ Disponible</span></td>
+            </tr>
+            <tr>
+              <td><strong>Mario Party</strong></td>
+              <td>Carreras</td>
+              <td><span class="badge badge-nin">Switch</span></td>
+              <td>2024</td>
+              <td>S/. 150</td>
+              <td><span class="stock-low">⚠ Últimas unidades</span></td>
+            </tr>
+            <tr>
+              <td><strong>Resident Evil 4 - Remake</strong></td>
+              <td>Terror</td>
+              <td><span class="badge badge-pc">PC/STEAM</span></td>
+              <td>2023</td>
+              <td>S/. 170</td>
+              <td><span class="stock-ok">✔ Disponible</span></td>
+            </tr>
+            <tr>
+              <td><strong>Halo: The Master Chief Collection</strong></td>
+              <td>Aventura</td>
+              <td><span class="badge badge-multi">Multi</span></td>
+              <td>2024</td>
+              <td>S/. 129</td>
+              <td><span class="stock-no">✖ Sin stock</span></td>
+            </tr>
+            <tr>
+              <td><strong>GTA Online</strong></td>
+              <td>Acción</td>
+              <td><span class="badge badge-pc">PC/SETAM</span></td>
+              <td>2013</td>
+              <td>S/. 59</td>
+              <td><span class="stock-ok">✔ Disponible</span></td>
+            </tr>
+            <tr>
+              <td><strong>Red Dead Redemption 2</strong></td>
+              <td>Acción</td>
+              <td><span class="badge badge-pc">PC/SETAM</span></td>
+              <td>2018</td>
+              <td>S/. 159</td>
+              <td><span class="stock-low">⚠ Últimas unidades</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="full-divider" />
+
+    <section id="multimedia">
+      <div class="section-header">
+        <span class="section-label">// MULTIMEDIA</span>
+        <h2>Galería y Trailers</h2>
+        <p>Mira capturas, escucha el ambiente y ve los trailers de nuestros juegos.</p>
+      </div>
+
+      <div class="media-container">
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80"
+              alt="Zona de gaming con setup de PC iluminado con luces RGB"
+              loading="lazy"
+            />
+            <span class="gallery-caption">Setup Gamer Pro</span>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=600&q=80"
+              alt="Consola PS5 blanca sobre mesa con control"
+              loading="lazy"
+            />
+            <span class="gallery-caption">PlayStation 5</span>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&q=80"
+              alt="Mando de Xbox Series X negro sobre fondo oscuro"
+              loading="lazy"
+            />
+            <span class="gallery-caption">Xbox Series X</span>
+          </div>
+        </div>
+
+        <div class="media-grid">
+          <div class="media-block">
+            <h3>🎬 Trailer de la Temporada</h3>
+            <div class="video-wrapper">
+              <iframe
+                      width="100%"
+                      height="315"
+                      src="https://www.youtube.com/embed/edYCtaNueQY"
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerpolicy="strict-origin-when-cross-origin"
+                      allowfullscreen>
+              </iframe>
+            </div>
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-top:10px;">
+              Video desde YouTube · Trailer oficial disponible próximamente
+            </p>
+          </div>
+        </div>
+
+        <div class="media-block">
+          <h3>🎵 Banda Sonora Destacada</h3>
+          <div class="audio-section">
+
+            <div class="audio-item">
+              <p><strong>Minecraft</strong> — Sweden (C418)</p>
+              <audio controls>
+                <source src="C418.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+
+            <div class="audio-item">
+              <p><strong>GTA V</strong> — Welcome To Los Santos</p>
+              <audio controls>
+                <source src="GTA%20V%20%20Soundtrack.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+
+            <div class="audio-item">
+              <p><strong>Halo</strong> — Mjolnir Mix (Main Theme)</p>
+              <audio controls>
+                <source src="CS2%20Soundtrack.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </section>
+
+    <hr class="full-divider" />
+
+    <section id="formulario">
+      <div class="section-header">
+        <span class="section-label">// CONTÁCTANOS</span>
+        <h2>¿Tienes alguna consulta?</h2>
+        <p>Escríbenos y te respondemos en menos de 24 horas.</p>
+      </div>
+
+      <div class="form-wrapper">
+        <form id="contact-form" action="#" method="POST" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre <span class="required">*</span></label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Tu nombre"
+                required
+                minlength="2"
+                maxlength="50"
+              />
+              <span class="form-hint">Mínimo 2 caracteres</span>
+              <span class="form-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="apellido">Apellido <span class="required">*</span></label>
+              <input
+                type="text"
+                id="apellido"
+                name="apellido"
+                placeholder="Tu apellido"
+                required
+                minlength="2"
+                maxlength="50"
+              />
+              <span class="form-error"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico <span class="required">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ejemplo@correo.com"
+              required
+            />
+            <span class="form-hint">Usaremos este correo para responderte</span>
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input
+                type="tel"
+                id="telefono"
+                name="telefono"
+                placeholder="+51 999 999 999"
+                pattern="[+]?[0-9\s\-]{7,15}"
+              />
+            </div>
+            <div class="form-group">
+              <label for="plataforma">Plataforma favorita</label>
+              <select id="plataforma" name="plataforma">
+                <option value="" disabled selected>Selecciona una</option>
+                <option value="ps5">PlayStation 5</option>
+                <option value="xbox">Xbox Series X/S</option>
+                <option value="switch">Nintendo Switch</option>
+                <option value="pc">PC / Steam</option>
+                <option value="movil">Móvil</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje <span class="required">*</span></label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              placeholder="Escribe tu consulta aquí..."
+              required
+              minlength="10"
+              maxlength="500"
+            ></textarea>
+            <span class="form-hint">Entre 10 y 500 caracteres</span>
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="newsletter" name="newsletter" />
+            <label for="newsletter">
+              Quiero recibir novedades y ofertas exclusivas de PixelVault por correo electrónico.
+            </label>
+          </div>
+          <button type="submit" class="btn-submit">Enviar mensaje →</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">Pixel<span>Vault</span></a>
+        <p>Tu tienda de confianza para videojuegos físicos y digitales. Envíos a todo el Perú.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tienda</h4>
+        <ul>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#tabla">Precios</a></li>
+          <li><a href="#">Ofertas</a></li>
+          <li><a href="#">Preventa</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Plataformas</h4>
+        <ul>
+          <li><a href="#">PlayStation</a></li>
+          <li><a href="#">Xbox</a></li>
+          <li><a href="#">Nintendo</a></li>
+          <li><a href="#">PC / Steam</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Soporte</h4>
+        <ul>
+          <li><a href="#formulario">Contacto</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Seguimiento</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="current-year"></span> PixelVault. Todos los derechos reservados.</p>
+      <p>Taller de <a href="#">Programación Web — UTP</a></p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
+
+
