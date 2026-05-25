@@ -600,6 +600,16 @@ section {
   animation: bounce 0.6s ease-out;
 }
 
+.card { /* O el nombre de la clase que uses para cada caja de juego */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-description { /* La clase del párrafo del texto */
+  flex-grow: 1; /* Esto empujará el precio y el botón siempre hacia abajo */
+}
+
 /* ============================================
    TABLA
    ============================================ */
