@@ -31,6 +31,130 @@ body {
   line-height: 1.6;
 }
 
+/* ============================================
+   ANIMACIONES CON @KEYFRAMES
+   ============================================ */
+
+/* Animación de pulso para botones principales */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(0, 229, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+  }
+}
+
+/* Animación de flotación suave */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Animación de brillo continuo */
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 12px rgba(0, 229, 255, 0.6),
+                 0 0 24px rgba(0, 229, 255, 0.4);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.9),
+                 0 0 40px rgba(0, 229, 255, 0.6),
+                 0 0 60px rgba(0, 229, 255, 0.3);
+  }
+}
+
+/* Animación de rotación suave */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animación de deslizamiento desde abajo */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación de aparición gradual */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animación de escalado suave */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animación de gradiente animado */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animación de parpadeo */
+@keyframes blink {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0.5;
+  }
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ============================================
+   HEADER Y NAVEGACIÓN
+   ============================================ */
+
 header {
   background-color: var(--bg-nav);
   border-bottom: 2px solid var(--accent);
@@ -38,6 +162,7 @@ header {
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 20px rgba(0, 229, 255, 0.15);
+  animation: slideUp 0.6s ease-out;
 }
 
 nav {
@@ -57,6 +182,18 @@ nav {
   text-decoration: none;
   letter-spacing: 1px;
   text-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.logo:hover {
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+.logo-icon {
+  animation: float 3s ease-in-out infinite;
 }
 
 .logo span {
@@ -77,6 +214,23 @@ nav {
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
 }
 
 .nav-links a:hover,
@@ -90,13 +244,14 @@ nav {
   padding: 8px 18px;
   border-radius: 6px;
   font-weight: 700 !important;
-  transition: background-color 0.3s, box-shadow 0.3s !important;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s !important;
 }
 
 .nav-cta:hover {
   background-color: #33eaff !important;
   box-shadow: 0 0 16px rgba(0, 229, 255, 0.5);
   color: var(--bg-dark) !important;
+  transform: translateY(-2px);
 }
 
 .menu {
@@ -133,6 +288,7 @@ nav {
 
 .mobile-menu.open {
   display: flex;
+  animation: slideUp 0.3s ease-out;
 }
 
 .mobile-menu a {
@@ -142,11 +298,12 @@ nav {
   font-size: 1rem;
   padding: 8px 0;
   border-bottom: 1px solid var(--border);
-  transition: color 0.3s;
+  transition: color 0.3s, padding-left 0.3s;
 }
 
 .mobile-menu a:hover {
   color: var(--accent);
+  padding-left: 10px;
 }
 
 .mobile-menu a:last-child {
@@ -154,12 +311,18 @@ nav {
   color: var(--accent);
 }
 
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
 .hero {
   background: linear-gradient(135deg, #0b0c10 0%, #131726 50%, #0e0a1e 100%);
+  background-size: 200% 200%;
   padding: 100px 24px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  animation: gradientShift 15s ease infinite, fadeIn 1s ease-out;
 }
 
 .hero::before {
@@ -168,10 +331,13 @@ nav {
   inset: 0;
   background: radial-gradient(ellipse at 50% 0%, rgba(124, 77, 255, 0.15) 0%, transparent 70%);
   pointer-events: none;
+  animation: pulse 4s ease-in-out infinite;
 }
 
 .hero-badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background: rgba(0, 229, 255, 0.12);
   border: 1px solid var(--accent);
   color: var(--accent);
@@ -181,6 +347,11 @@ nav {
   border-radius: 50px;
   margin-bottom: 28px;
   letter-spacing: 1px;
+  animation: pulse 2s ease-in-out infinite, float 3s ease-in-out infinite;
+}
+
+.badge-icon {
+  animation: blink 2s ease-in-out infinite;
 }
 
 .hero h1 {
@@ -189,11 +360,12 @@ nav {
   line-height: 1.5;
   color: #fff;
   margin-bottom: 20px;
+  animation: slideUp 0.8s ease-out 0.2s both;
 }
 
 .hero h1 .highlight {
   color: var(--accent);
-  text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+  animation: glow 2s ease-in-out infinite;
 }
 
 .hero p {
@@ -201,6 +373,7 @@ nav {
   color: var(--text-muted);
   max-width: 560px;
   margin: 0 auto 36px;
+  animation: slideUp 0.8s ease-out 0.4s both;
 }
 
 .hero-buttons {
@@ -208,6 +381,7 @@ nav {
   gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
+  animation: slideUp 0.8s ease-out 0.6s both;
 }
 
 .btn-primary {
@@ -220,12 +394,15 @@ nav {
   text-decoration: none;
   font-family: var(--font-body);
   transition: box-shadow 0.3s, transform 0.2s;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
 .btn-primary:hover {
   box-shadow: 0 0 24px rgba(0, 229, 255, 0.5);
   transform: translateY(-2px);
+  animation: none;
 }
 
 .btn-secondary {
@@ -238,24 +415,32 @@ nav {
   font-size: 1rem;
   text-decoration: none;
   font-family: var(--font-body);
-  transition: border-color 0.3s, color 0.3s;
-  display: inline-block;
+  transition: border-color 0.3s, color 0.3s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
 }
 
 .btn-secondary:hover {
   border-color: var(--accent2);
   color: var(--accent2);
+  transform: translateY(-2px);
 }
+
+/* ============================================
+   SECTIONS
+   ============================================ */
 
 section {
   max-width: 1200px;
   margin: 0 auto;
   padding: 80px 24px;
+  animation: fadeIn 1s ease-out;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 52px;
+  animation: slideUp 0.8s ease-out;
 }
 
 .section-label {
@@ -280,6 +465,10 @@ section {
   max-width: 500px;
   margin: 0 auto;
 }
+
+/* ============================================
+   CATÁLOGO
+   ============================================ */
 
 #catalogo {
   background-color: #0e1018;
@@ -314,7 +503,16 @@ section {
   border: 1px solid var(--border);
   overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
+  animation: scaleIn 0.6s ease-out;
+  animation-fill-mode: both;
 }
+
+.game-card:nth-child(1) { animation-delay: 0.1s; }
+.game-card:nth-child(2) { animation-delay: 0.2s; }
+.game-card:nth-child(3) { animation-delay: 0.3s; }
+.game-card:nth-child(4) { animation-delay: 0.4s; }
+.game-card:nth-child(5) { animation-delay: 0.5s; }
+.game-card:nth-child(6) { animation-delay: 0.6s; }
 
 .game-card:hover {
   transform: translateY(-6px);
@@ -326,6 +524,11 @@ section {
   height: 200px;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s;
+}
+
+.game-card:hover img {
+  transform: scale(1.1);
 }
 
 .game-card-body {
@@ -339,6 +542,8 @@ section {
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
 }
 
 .game-card h3 {
@@ -365,6 +570,7 @@ section {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--success);
+  animation: pulse 3s ease-in-out infinite;
 }
 
 .btn-card {
@@ -378,17 +584,25 @@ section {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
 }
 
 .btn-card:hover {
   background-color: #9c6fff;
   transform: scale(1.05);
+  animation: pulse 1s ease-in-out infinite;
 }
 
 .btn-card.added {
   background-color: var(--success);
   color: var(--bg-dark);
+  animation: bounce 0.6s ease-out;
 }
+
+/* ============================================
+   TABLA
+   ============================================ */
 
 #tabla {
   background-color: var(--bg-dark);
@@ -398,6 +612,7 @@ section {
   overflow-x: auto;
   border-radius: 12px;
   border: 1px solid var(--border);
+  animation: scaleIn 0.8s ease-out;
 }
 
 table {
@@ -417,6 +632,7 @@ table caption {
 
 thead tr {
   background-color: #141828;
+  animation: slideUp 0.6s ease-out;
 }
 
 thead th {
@@ -430,6 +646,7 @@ thead th {
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
+  transition: background-color 0.2s;
 }
 
 thead th:hover {
@@ -439,7 +656,15 @@ thead th:hover {
 tbody tr {
   border-bottom: 1px solid var(--border);
   transition: background-color 0.2s;
+  animation: fadeIn 0.8s ease-out;
+  animation-fill-mode: both;
 }
+
+tbody tr:nth-child(1) { animation-delay: 0.1s; }
+tbody tr:nth-child(2) { animation-delay: 0.15s; }
+tbody tr:nth-child(3) { animation-delay: 0.2s; }
+tbody tr:nth-child(4) { animation-delay: 0.25s; }
+tbody tr:nth-child(5) { animation-delay: 0.3s; }
 
 tbody tr:last-child {
   border-bottom: none;
@@ -461,6 +686,11 @@ tbody td {
   border-radius: 50px;
   font-size: 0.75rem;
   font-weight: 700;
+  transition: transform 0.2s;
+}
+
+.badge:hover {
+  transform: scale(1.1);
 }
 
 .badge-ps5   { background: rgba(0, 112, 209, 0.2);  color: #4fc3f7; border: 1px solid #4fc3f7; }
@@ -469,9 +699,31 @@ tbody td {
 .badge-pc    { background: rgba(124, 77, 255, 0.2);  color: #b388ff; border: 1px solid #b388ff; }
 .badge-multi { background: rgba(0, 229, 255, 0.15);  color: var(--accent); border: 1px solid var(--accent); }
 
-.stock-ok  { color: var(--success); font-weight: 600; }
-.stock-low { color: #ffd740;        font-weight: 600; }
-.stock-no  { color: var(--error);   font-weight: 600; }
+.stock-ok  { 
+  color: var(--success); 
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.stock-low { 
+  color: #ffd740;        
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  animation: blink 2s ease-in-out infinite;
+}
+
+.stock-no  { 
+  color: var(--error);   
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+/* ============================================
+   MULTIMEDIA
+   ============================================ */
 
 #multimedia {
   background-color: #0e1018;
@@ -486,56 +738,6 @@ tbody td {
   padding: 0 24px;
 }
 
-.media-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-}
-
-.media-block h3 {
-  font-family: var(--font-pixel);
-  font-size: 0.65rem;
-  color: var(--accent);
-  letter-spacing: 1px;
-  margin-bottom: 14px;
-}
-
-.video-wrapper {
-  border-radius: 10px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background-color: #000;
-}
-
-.video-wrapper video {
-  width: 100%;
-  display: block;
-}
-
-
-.audio-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.audio-item {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 18px 20px;
-}
-
-.audio-item p {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-}
-
-.audio-item audio {
-  width: 100%;
-}
-
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -548,7 +750,16 @@ tbody td {
   overflow: hidden;
   border: 1px solid var(--border);
   position: relative;
+  animation: scaleIn 0.6s ease-out;
+  animation-fill-mode: both;
 }
+
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.2s; }
+.gallery-item:nth-child(3) { animation-delay: 0.3s; }
+.gallery-item:nth-child(4) { animation-delay: 0.4s; }
+.gallery-item:nth-child(5) { animation-delay: 0.5s; }
+.gallery-item:nth-child(6) { animation-delay: 0.6s; }
 
 .gallery-item img {
   width: 100%;
@@ -572,7 +783,85 @@ tbody td {
   padding: 14px 12px 10px;
   font-size: 0.8rem;
   font-weight: 600;
+  transform: translateY(100%);
+  transition: transform 0.3s;
 }
+
+.gallery-item:hover .gallery-caption {
+  transform: translateY(0);
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.media-block h3 {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.video-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background-color: #000;
+  transition: box-shadow 0.3s;
+}
+
+.video-wrapper:hover {
+  box-shadow: 0 8px 32px rgba(0, 229, 255, 0.15);
+}
+
+.video-wrapper video {
+  width: 100%;
+  display: block;
+}
+
+.audio-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.audio-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: slideUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.audio-item:nth-child(1) { animation-delay: 0.1s; }
+.audio-item:nth-child(2) { animation-delay: 0.2s; }
+.audio-item:nth-child(3) { animation-delay: 0.3s; }
+
+.audio-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 16px rgba(0, 229, 255, 0.1);
+}
+
+.audio-item p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.audio-item audio {
+  width: 100%;
+}
+
+/* ============================================
+   FORMULARIO
+   ============================================ */
 
 #formulario {
   background-color: var(--bg-dark);
@@ -585,6 +874,7 @@ tbody td {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 44px 48px;
+  animation: scaleIn 0.8s ease-out;
 }
 
 .form-row {
@@ -595,7 +885,14 @@ tbody td {
 
 .form-group {
   margin-bottom: 24px;
+  animation: slideUp 0.6s ease-out;
+  animation-fill-mode: both;
 }
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.15s; }
+.form-group:nth-child(3) { animation-delay: 0.2s; }
+.form-group:nth-child(4) { animation-delay: 0.25s; }
 
 .form-group label {
   display: block;
@@ -657,7 +954,6 @@ tbody td {
   display: block;
 }
 
-/* Mensaje de error JS */
 .form-error {
   font-size: 0.78rem;
   color: var(--error);
@@ -668,10 +964,12 @@ tbody td {
 .form-group.has-error input,
 .form-group.has-error textarea {
   border-color: var(--error);
+  animation: bounce 0.6s ease-out;
 }
 
 .form-group.has-error .form-error {
   display: block;
+  animation: slideUp 0.3s ease-out;
 }
 
 .form-check {
@@ -679,6 +977,7 @@ tbody td {
   align-items: flex-start;
   gap: 12px;
   margin-bottom: 28px;
+  animation: slideUp 0.6s ease-out 0.3s both;
 }
 
 .form-check input[type="checkbox"] {
@@ -708,12 +1007,21 @@ tbody td {
   cursor: pointer;
   transition: box-shadow 0.3s, transform 0.2s;
   letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2.5s ease-in-out infinite, slideUp 0.6s ease-out 0.35s both;
 }
 
 .btn-submit:hover {
   box-shadow: 0 0 24px rgba(0, 229, 255, 0.4);
   transform: translateY(-2px);
+  animation: none;
 }
+
+/* ============================================
+   TOAST
+   ============================================ */
 
 .toast {
   position: fixed;
@@ -737,12 +1045,18 @@ tbody td {
 .toast.show {
   opacity: 1;
   transform: translateY(0);
+  animation: bounce 0.6s ease-out;
 }
+
+/* ============================================
+   FOOTER
+   ============================================ */
 
 footer {
   background-color: var(--bg-nav);
   border-top: 1px solid var(--border);
   padding: 60px 24px 30px;
+  animation: fadeIn 1s ease-out;
 }
 
 .footer-grid {
@@ -783,11 +1097,12 @@ footer {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9rem;
-  transition: color 0.3s;
+  transition: color 0.3s, padding-left 0.3s;
 }
 
 .footer-col ul a:hover {
   color: var(--accent);
+  padding-left: 5px;
 }
 
 .footer-bottom {
@@ -808,6 +1123,11 @@ footer {
 .footer-bottom a {
   color: var(--accent);
   text-decoration: none;
+  transition: text-shadow 0.3s;
+}
+
+.footer-bottom a:hover {
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
 }
 
 .full-divider {
@@ -816,6 +1136,10 @@ footer {
   max-width: 100%;
   margin: 0;
 }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 
 @media (max-width: 900px) {
   .media-grid {
@@ -828,6 +1152,10 @@ footer {
 
   .hero h1 {
     font-size: 1.5rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -857,11 +1185,15 @@ footer {
   }
 
   .gallery-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
   }
 }

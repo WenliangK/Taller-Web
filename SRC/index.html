@@ -19,7 +19,13 @@
 
   <header>
     <nav>
-      <a href="#inicio" class="logo">Pixel<span>Vault</span></a>
+      <a href="#inicio" class="logo">
+        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+        Pixel<span>Vault</span>
+      </a>
       <ul class="nav-links">
         <li><a href="#catalogo">Catálogo</a></li>
         <li><a href="#tabla">Precios</a></li>
@@ -45,12 +51,35 @@
   <main id="inicio">
 
     <div class="hero">
-      <span class="hero-badge">🎮 NUEVA TEMPORADA 2025</span>
+      <span class="hero-badge">
+        <svg class="badge-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+        NUEVA TEMPORADA 2025
+      </span>
       <h1>Tu próximo juego favorito<br />te está esperando en <span class="highlight">PixelVault</span></h1>
       <p>Explora nuestro catálogo con los mejores títulos para PS5, Xbox, Nintendo y PC. Precios imbatibles y envío rápido.</p>
       <div class="hero-buttons">
-        <a href="#catalogo" class="btn-primary">Ver Catálogo</a>
-        <a href="#formulario" class="btn-secondary">Más información</a>
+        <a href="#catalogo" class="btn-primary">
+          Ver Catálogo
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 8px;">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="#formulario" class="btn-secondary">
+          Más información
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+        </a>
       </div>
     </div>
 
@@ -70,29 +99,56 @@
             loading="lazy"
           />
           <div class="game-card-body">
-            <p class="game-platform">PC/STEAM</p>
+            <p class="game-platform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              PC/STEAM
+            </p>
             <h3>Counter-Strike 2</h3>
             <p>Durante las dos últimas décadas, Counter‑Strike ha proporcionado una experiencia competitiva de primer nivel para los millones de jugadores de todo el mundo que contribuyeron a darle forma. Ahora el próximo capítulo en la historia de CS está a punto de comenzar. Hablamos de Counter‑Strike 2.</p>
             <div class="game-footer">
               <span class="game-price">S/. 58</span>
-              <button class="btn-card">Agregar 🛒</button>
+              <button class="btn-card">
+                Agregar
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
 
         <div class="game-card">
           <img
-            src="data:image/webp;base64,UklGRv4DAABXRUJQVlA4TPIDAAAvoIAmAO/mKpIkxaqaucfw9SQ8T8+/CIZpGw7aSHIk91zgj/Ip5J920EaSI7lnPvFH+DTSXs9/QM6HTvVGCcJ2lv/RC2cgRAJqMRJ8rxarswoIgZquBQr2DiH+BRUEwc5CcPys3AiEKbEYBoFQ4BCDIOhAKkBhkapCR0EQggJCoFACgUAEBZRARKRHBlSAiqX4oYZVf17zRS+X44lUIxPLhqAYxFge9TkWTwIb5zMcVrNaYBAKFDLKpZQ94u8HGgKlgYX4TAyW/djnRRTENNqYoe4xRxy/HIGLQA3KUNFVASFQGAJF/spQLbMmd/et63kjFAiVEAiBQlEEqoQggQgIAqFC0fqJfxgoFOzxM2aWE8cegiIIAkFRERACMWilEIQW7yx+H4X3/y8g0Lo93trhkLBtmyk3m9S2wjqs7diqbdtm6sap3ca2a9vmn1nMmW/PzMbJ0eyJ6L9rRZKkKFMSRkZt9un8goxGm60ACybbCIPzTu7jhwkwb6eAX9f7jxKg8n1kfp9jb2WtMpV7n8EDbP6dLQai3vpvbaVfjOFVpjL7qZ/4zofVbp4wB14GIzhKMCevfc8379ZMcoM5AEzROSc3mFNMAOehTDQF0J8r4NMXHHHxJC0zZrt7CKq2gqD/AEMd4FsuyR4YwwqqoPoQx8xxo/Ec1R+cgovmUQqOY8bO8ids4R7QvklTLJtp4sHEaprhzWvZIYS0LUGtNLhGgxdmCVfRT38LBcTzRms/k5fWNUupCm6pXUg74tKWnkV8JbalOpXoqnx8yYlbmKckeQS34SslkfgEeoZJkjCZf8TpvW212vXVYHP122eYTJGw7Wers8+0T3xTkZqWrqfAMC09PtTbS1tP3OtCxx8rzcA1Xc80oYLwr6DZyxMjJsMcFv4cf2RaVEQXN5hDjj7LoNwXYEYCMB2pEjEcugin//TJwQF+ICecek47r3dbNIcpH6GffRqoZrnKwysjIFbLFhVo38DZ+5HzvUk28eTn/EH6++cuMHt+/P3DMWl2JuH8itiwabNOSdFz+zwwc7dxzHk4Io8RTtlGB1ekLhM6gxEGyWgdDj0lHfGAixvawO5guvgytC5bqMO3Ro7Sg86+aIO6gemq+qJ13fqEdMrXd+yJtldLMC16cMzZaV0x8YsVGr5d9op4lvOOIBKPmf+I2VVAshp+z8qd+2HuWEV/rn9991bQirqOY4ov1+hPdHEmzII4CmP8f5vQn3g49Ce+OpzoqmBqRi+rCr0HqCVOtOnJYk5iwERxIr4gPerpRUuWyoqBsrLgRiEQ5eZ89JjKwjPPGOkm32VIH7A74DlTk5LRJt6j4B9j2VwKxh+UNQ4oAw=="
+            src="data:image/webp;base64,UklGRv4DAABXRUJQVlA4TPIDAAAvoIAmAO/mKpIkxaqaucfw9SQ8T8+/CIZpGw7aSHIk91zgj/Ip5J920EaSI7lnPvFH+DTSXs9/QM6HTvVGCcJ2lv/RC2cgRAJqMRJ8rxarswoIgZquBQr2DiH+BRUEwc5CcPys3AiEKbEYBoFQ4BCDIOhAKkBhkapCR0EQggJCoFACgUAEBZRARKRHBlSAiqX4oYZVf17zRS+X44lUIxPLhqAYxFge9TkWTwIb5zMcVrNaYBAKFDLKpZQ94u8HGgKlgYX4TAyW/djnRRTENNqYoe4xRxy/HIGLQA3KUNFVASFQGAJF/spQLbMmd/et63kjFAiVEAiBQlEEqoQggQgIAqFC0fqJfxgoFOzxM2aWE8cegiIIAkFRERACMWilEIQW7yx+H4X3/y8g0Lo93trhkLBtmyk3m9S2wjqs7diqbdtm6sap3ca2a9vmn1nMmW/PzMbJ0eyJ6L9rRZKkKFMSRkZt9un8goxGm60ACybbCIPzTu7jhwkwb6eAX9f7jxKg8n1kfp9jb2WtMpV7n8EDbP6dLQai3vpvbaVfjOFVpjL7qZ/4zofVbp4wB14GIzhKMCevfc8379ZMcoM5AEzROSc3mFNMAOehTDQF0J8r4NMXHHHxJC0zZrt7CKq2gqD/AEMd4FsuyR4YwwqqoPoQx8xxo/Ec1R+cgovmUQqOY8bO8ids4R7QvklTLJtp4sHEaprhzWvZIYS0LUGtNLhGgxdmCVfRT38LBcTzRms/k5fWNUupCm6pXUg74tKWnkV8JbalOpXoqnx8yYlbmKckeQS34SslkfgEeoZJkjCZf8TpvW212vXVYHP122eYTJGw7Wers8+0T3xTkZqWrqfAMC09PtTbS1tP3OtCxx8rzcA1Xc80oYLwr6DZyxMjJsMcFv4cf2RaVEQXN5hDjj7LoNwXYEYCMB2pEjEcuwin//TJwQF+ICecek47r3dbNIcpH6GffRqoZrnKwysjIFbLFhVo38DZ+5HzvUk28eTn/EH6++cuMHt+/P3DMWl2JuH8itiwabNOSdFz+zwwc7dxzHk4Io8RTtlGB1ekLhM6gxEGyWgdDj0lHfGAixvawO5guvgytC5bqMO3Ro7Sg86+aIO6gemq+qJ13fqEdMrXd+yJtldLMC16cMzZaV0x8YsVGr5d9op4lvOOIBKPmf+I2VVAshp+z8qd+2HuWEV/rn9991bQirqOY4ov1+hPdHEmzII4CmP8f5vQn3g49Ce+OpzoqmBqRi+rCr0HqCVOtOnJYk5iwERxIr4gPerpRUuWyoqBsrLgRiEQ5eZ89JjKwjPPGOkm32VIH7A74DlTk5LRJt6j4B9j2VwKxh+UNQ4oAw=="
             alt="Minecraft"
             loading="lazy"
           />
           <div class="game-card-body">
-            <p class="game-platform">Xbox Series X</p>
+            <p class="game-platform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              Xbox Series X
+            </p>
             <h3>Minecraft</h3>
             <p>Minecraft es un juego formado por bloques, criaturas y comunidades. La elección es tuya: sobrevivir a la noche o crear una obra de arte.</p>
             <div class="game-footer">
               <span class="game-price">S/. 110</span>
-              <button class="btn-card">Agregar 🛒</button>
+              <button class="btn-card">
+                Agregar
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -104,12 +160,25 @@
             loading="lazy"
           />
           <div class="game-card-body">
-            <p class="game-platform">Nintendo Switch</p>
+            <p class="game-platform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              Nintendo Switch
+            </p>
             <h3>Mario Party</h3>
-            <p>El Fiesta de Mario La serie es una serie de juegos de fiesta presentando a los personajes de la Super Mario franquicia, en el que cuatro personajes controlados por humanos o computadoras compiten en un juego de mesa intercalado con minijuegos. La serie es conocida por sus elementos de juego de fiesta, incluidos los modos multijugador a menudo impredecibles que permiten jugar con hasta cuatro y, en Fiesta de Mario 7'El caso, ocho jugadores humanos.</p>
+            <p>El Fiesta de Mario La serie es una serie de juegos de fiesta presentando a los personajes de la Super Mario franquicia, en el que cuatro personajes controlados por humanos o computadoras compiten en un juego de mesa intercalado con minijuegos.</p>
             <div class="game-footer">
               <span class="game-price">S/. 150</span>
-              <button class="btn-card">Agregar 🛒</button>
+              <button class="btn-card">
+                Agregar
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -121,12 +190,26 @@
             loading="lazy"
           />
           <div class="game-card-body">
-            <p class="game-platform">PC / Steam</p>
+            <p class="game-platform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              PC / Steam
+            </p>
             <h3>Resident Evil 4 - Remake</h3>
             <p>Resident Evil 4 — conocido en Japón como Biohazard 4 — es un videojuego de acción-aventura de disparos en tercera persona de terror y supervivencia desarrollado y publicado por Capcom para la GameCube.</p>
             <div class="game-footer">
               <span class="game-price">S/. 170</span>
-              <button class="btn-card">Agregar 🛒</button>
+              <button class="btn-card">
+                Agregar
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -138,12 +221,25 @@
             loading="lazy"
           />
           <div class="game-card-body">
-            <p class="game-platform">PS5 / Xbox</p>
+            <p class="game-platform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              PS5 / Xbox
+            </p>
             <h3>Halo: The Master Chief Collection</h3>
-            <p>Halo: La colección del jefe maestro es un compilación de tirador en primera persona juegos desarrollados por 343 Industrias, Cierta afinidad y Saber interactivo y publicado por Estudios de juegos de Xbox. Incluye los primeros seis juegos principales del Halo franquicia lanzada entre 2001 y 2012, desarrollada originalmente por Bungie y 343 Industrias.</p>
+            <p>Halo: La colección del jefe maestro es un compilación de tirador en primera persona juegos desarrollados por 343 Industrias, Cierta afinidad y Saber interactivo y publicado por Estudios de juegos de Xbox.</p>
             <div class="game-footer">
               <span class="game-price">S/. 200</span>
-              <button class="btn-card">Agregar 🛒</button>
+              <button class="btn-card">
+                Agregar
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -155,12 +251,26 @@
             loading="lazy"
           />
           <div class="game-card-body">
-            <p class="game-platform">PC</p>
+            <p class="game-platform">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              PC
+            </p>
             <h3>GTA V Online</h3>
-            <p>Experimenta GTA Online, un universo en línea dinámico y en constante evolución para hasta 30 jugadores, donde puedes pasar de ser un estafador callejero a convertirte en el capo de tu propio imperio criminal. Disfrute de nuevas actualizaciones y mejoras de vehículos de alto rendimiento como Career Builder, así como todas las actualizaciones, expansiones y contenido del juego GTA Online lanzados desde el lanzamiento, listos para disfrutar solos o con amigos. Realice atrevidos atracos cooperativos, participe en carreras de riesgo llenas de adrenalina, compita en modos adversarios únicos o pase el rato en espacios sociales que incluyen clubes nocturnos, salas de juegos, fiestas en áticos, reuniones de autos y mucho más.</p>
+            <p>Experimenta GTA Online, un universo en línea dinámico y en constante evolución para hasta 30 jugadores, donde puedes pasar de ser un estafador callejero a convertirte en el capo de tu propio imperio criminal.</p>
             <div class="game-footer">
               <span class="game-price">S/. 160</span>
-              <button class="btn-card">Agregar 🛒</button>
+              <button class="btn-card">
+                Agregar
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -185,7 +295,6 @@
               <th scope="col">Título</th>
               <th scope="col">Género</th>
               <th scope="col">Plataforma</th>
-              <th scope="col">Año</th>
               <th scope="col">Precio</th>
               <th scope="col">Stock</th>
             </tr>
@@ -193,59 +302,129 @@
           <tbody>
             <tr>
               <td><strong>Counter-Strike 2</strong></td>
-              <td>Shooter / FPS</td>
-              <td><span class="badge badge-pc">PC/SETAM</span></td>
-              <td>2023</td>
+              <td>Shooter</td>
+              <td><span class="badge badge-pc">PC</span></td>
               <td>S/. 58</td>
-              <td><span class="stock-ok">✔ Disponible</span></td>
+              <td class="stock-ok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Disponible
+              </td>
             </tr>
             <tr>
               <td><strong>Minecraft</strong></td>
-              <td>Aventuras</td>
-              <td><span class="badge badge-xbox">Xbox</span></td>
-              <td>2009</td>
-              <td>S/. 179</td>
-              <td><span class="stock-ok">✔ Disponible</span></td>
+              <td>Sandbox</td>
+              <td><span class="badge badge-multi">Multi</span></td>
+              <td>S/. 110</td>
+              <td class="stock-ok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Disponible
+              </td>
             </tr>
             <tr>
               <td><strong>Mario Party</strong></td>
-              <td>Carreras</td>
-              <td><span class="badge badge-nin">Switch</span></td>
-              <td>2024</td>
+              <td>Party</td>
+              <td><span class="badge badge-nin">Nintendo</span></td>
               <td>S/. 150</td>
-              <td><span class="stock-low">⚠ Últimas unidades</span></td>
+              <td class="stock-low">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                Pocas unidades
+              </td>
             </tr>
             <tr>
               <td><strong>Resident Evil 4 - Remake</strong></td>
-              <td>Terror</td>
-              <td><span class="badge badge-pc">PC/STEAM</span></td>
-              <td>2023</td>
+              <td>Survival Horror</td>
+              <td><span class="badge badge-multi">Multi</span></td>
               <td>S/. 170</td>
-              <td><span class="stock-ok">✔ Disponible</span></td>
+              <td class="stock-ok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Disponible
+              </td>
             </tr>
             <tr>
               <td><strong>Halo: The Master Chief Collection</strong></td>
-              <td>Aventura</td>
+              <td>Shooter</td>
+              <td><span class="badge badge-xbox">Xbox</span></td>
+              <td>S/. 200</td>
+              <td class="stock-ok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Disponible
+              </td>
+            </tr>
+            <tr>
+              <td><strong>GTA V Online</strong></td>
+              <td>Action</td>
               <td><span class="badge badge-multi">Multi</span></td>
-              <td>2024</td>
-              <td>S/. 129</td>
-              <td><span class="stock-no">✖ Sin stock</span></td>
+              <td>S/. 160</td>
+              <td class="stock-ok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Disponible
+              </td>
             </tr>
             <tr>
-              <td><strong>GTA Online</strong></td>
-              <td>Acción</td>
-              <td><span class="badge badge-pc">PC/SETAM</span></td>
-              <td>2013</td>
-              <td>S/. 59</td>
-              <td><span class="stock-ok">✔ Disponible</span></td>
+              <td><strong>The Legend of Zelda: TOTK</strong></td>
+              <td>Adventure</td>
+              <td><span class="badge badge-nin">Nintendo</span></td>
+              <td>S/. 280</td>
+              <td class="stock-no">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                Agotado
+              </td>
             </tr>
             <tr>
-              <td><strong>Red Dead Redemption 2</strong></td>
-              <td>Acción</td>
-              <td><span class="badge badge-pc">PC/SETAM</span></td>
-              <td>2018</td>
-              <td>S/. 159</td>
-              <td><span class="stock-low">⚠ Últimas unidades</span></td>
+              <td><strong>FIFA 24</strong></td>
+              <td>Sports</td>
+              <td><span class="badge badge-multi">Multi</span></td>
+              <td>S/. 220</td>
+              <td class="stock-ok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Disponible
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Elden Ring</strong></td>
+              <td>RPG</td>
+              <td><span class="badge badge-ps5">PS5</span></td>
+              <td>S/. 250</td>
+              <td class="stock-low">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                  <line x1="12" y1="9" x2="12" y2="13"></line>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                Pocas unidades
+              </td>
+            </tr>
+            <tr>
+              <td><strong>God of War Ragnarök</strong></td>
+              <td>Action-Adventure</td>
+              <td><span class="badge badge-ps5">PS5</span></td>
+              <td>S/. 270</td>
+              <td class="stock-ok">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Disponible
+              </td>
             </tr>
           </tbody>
         </table>
@@ -256,44 +435,50 @@
 
     <section id="multimedia">
       <div class="section-header">
-        <span class="section-label">// MULTIMEDIA</span>
-        <h2>Galería y Trailers</h2>
-        <p>Mira capturas, escucha el ambiente y ve los trailers de nuestros juegos.</p>
+        <span class="section-label">// GALERÍA</span>
+        <h2>Multimedia</h2>
+        <p> Capturas, tráilers y bandas sonoras de nuestros juegos destacados.</p>
       </div>
 
       <div class="media-container">
-
-        <div class="gallery-grid">
+        <div class="gallery-grid" style="margin-bottom: 1.5rem;">
           <div class="gallery-item">
-            <img
-              src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80"
-              alt="Zona de gaming con setup de PC iluminado con luces RGB"
-              loading="lazy"
-            />
-            <span class="gallery-caption">Setup Gamer Pro</span>
+            <img src="https://gaming-cdn.com/images/products/9459/orig/counter-strike-2-pc-mac-juego-steam-cover.jpg?v=1742208833" alt="CS:GO Gameplay" loading="lazy" />
+            <div class="gallery-caption">Counter-Strike 2</div>
           </div>
           <div class="gallery-item">
-            <img
-              src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=600&q=80"
-              alt="Consola PS5 blanca sobre mesa con control"
-              loading="lazy"
-            />
-            <span class="gallery-caption">PlayStation 5</span>
+            <img src="https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png" alt="God of War" loading="lazy" />
+            <div class="gallery-caption">God of War Ragnarök</div>
           </div>
           <div class="gallery-item">
-            <img
-              src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&q=80"
-              alt="Mando de Xbox Series X negro sobre fondo oscuro"
-              loading="lazy"
-            />
-            <span class="gallery-caption">Xbox Series X</span>
+            <img src="https://www.allkeyshop.com/blog/wp-content/uploads/elden-ring-title-1024x536.webp" alt="Elden Ring" loading="lazy" />
+            <div class="gallery-caption">Elden Ring</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://www.nintendo.com/eu/media/images/other_22/character_hubs/the_legend_of_zelda/16x9_Other_TheLegendOfZelda_Hub_image1600w.jpg" alt="Zelda TOTK" loading="lazy" />
+            <div class="gallery-caption">Zelda: TOTK</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://cdn.wccftech.com/wp-content/uploads/2023/02/WCCFresidentevil4remake14-1456x819.jpg" alt="RE4 Remake" loading="lazy" />
+            <div class="gallery-caption">Resident Evil 4 Remake</div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://s1.ppllstatics.com/elcorreo/www/multimedia/202112/05/media/cortadas/halo-infinite-kT0E-U160172780166saH-1248x770@El%20Correo.jpg" alt="Halo Infinite" loading="lazy" />
+            <div class="gallery-caption">Halo Infinite</div>
           </div>
         </div>
 
         <div class="media-grid">
           <div class="media-block">
-            <h3>🎬 Trailer de la Temporada</h3>
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
+                <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+              </svg>
+              Tráiler Destacado
+            </h3>
             <div class="video-wrapper">
+              <div class="video-wrapper">
               <iframe
                       width="100%"
                       height="315"
@@ -305,41 +490,45 @@
                       allowfullscreen>
               </iframe>
             </div>
-            <p style="font-size:0.78rem; color:var(--text-muted); margin-top:10px;">
-              Video desde YouTube · Trailer oficial disponible próximamente
-            </p>
+            </div>
           </div>
-        </div>
 
-        <div class="media-block">
-          <h3>🎵 Banda Sonora Destacada</h3>
-          <div class="audio-section">
+          <div class="media-block">
+            <h3>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
+                <path d="M9 18V5l12-2v13"></path>
+                <circle cx="6" cy="18" r="3"></circle>
+                <circle cx="18" cy="16" r="3"></circle>
+              </svg>
+              Banda Sonora Destacada
+            </h3>
+            <div class="audio-section">
 
-            <div class="audio-item">
-              <p><strong>Minecraft</strong> — Sweden (C418)</p>
-              <audio controls>
-                <source src="audio/C418.mp3" type="audio/mpeg">
-              </audio>
+              <div class="audio-item">
+                <p><strong>Minecraft</strong> — Sweden (C418)</p>
+                <audio controls>
+                  <source src="audio/C418.mp3" type="audio/mpeg">
+                </audio>
+              </div>
+
+              <div class="audio-item">
+                <p><strong>GTA V</strong> — Welcome To Los Santos</p>
+                <audio controls>
+                  <source src="audio/GTAVSoundtrack.mp3" type="audio/mpeg">
+                </audio>
+              </div>
+
+              <div class="audio-item">
+                <p><strong>Halo</strong> — Mjolnir Mix (Main Theme)</p>
+                <audio controls>
+                  <source src="audio/CS2Soundtrack.mp3" type="audio/mpeg">
+                </audio>
+              </div>
+
             </div>
-
-            <div class="audio-item">
-              <p><strong>GTA V</strong> — Welcome To Los Santos</p>
-              <audio controls>
-                <source src="audio/GTAVSoundtrack.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-
-            <div class="audio-item">
-              <p><strong>Halo</strong> — Mjolnir Mix (Main Theme)</p>
-              <audio controls>
-                <source src="audio/CS2Soundtrack.mp3" type="audio/mpeg">
-              </audio>
-            </div>
-
           </div>
-        </div>
 
-      </div>
+        </div>
       </div>
     </section>
 
@@ -442,7 +631,13 @@
               Quiero recibir novedades y ofertas exclusivas de PixelVault por correo electrónico.
             </label>
           </div>
-          <button type="submit" class="btn-submit">Enviar mensaje →</button>
+          <button type="submit" class="btn-submit">
+            Enviar mensaje
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 8px;">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
         </form>
       </div>
     </section>
@@ -452,7 +647,13 @@
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#inicio" class="logo">Pixel<span>Vault</span></a>
+        <a href="#inicio" class="logo">
+          <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+          Pixel<span>Vault</span>
+        </a>
         <p>Tu tienda de confianza para videojuegos físicos y digitales. Envíos a todo el Perú.</p>
       </div>
       <div class="footer-col">
@@ -495,5 +696,3 @@
 
 </body>
 </html>
-
-
