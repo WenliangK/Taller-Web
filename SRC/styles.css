@@ -31,11 +31,7 @@ body {
   line-height: 1.6;
 }
 
-/* ============================================
-   ANIMACIONES CON @KEYFRAMES
-   ============================================ */
 
-/* Animación de pulso para botones principales */
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.5);
@@ -48,7 +44,6 @@ body {
   }
 }
 
-/* Animación de flotación suave */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -58,7 +53,6 @@ body {
   }
 }
 
-/* Animación de brillo continuo */
 @keyframes glow {
   0%, 100% {
     text-shadow: 0 0 12px rgba(0, 229, 255, 0.6),
@@ -71,7 +65,6 @@ body {
   }
 }
 
-/* Animación de rotación suave */
 @keyframes rotate {
   from {
     transform: rotate(0deg);
@@ -81,7 +74,6 @@ body {
   }
 }
 
-/* Animación de deslizamiento desde abajo */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -93,7 +85,6 @@ body {
   }
 }
 
-/* Animación de aparición gradual */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -103,7 +94,6 @@ body {
   }
 }
 
-/* Animación de escalado suave */
 @keyframes scaleIn {
   from {
     opacity: 0;
@@ -115,7 +105,6 @@ body {
   }
 }
 
-/* Animación de gradiente animado */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -128,7 +117,6 @@ body {
   }
 }
 
-/* Animación de parpadeo */
 @keyframes blink {
   0%, 50%, 100% {
     opacity: 1;
@@ -138,7 +126,6 @@ body {
   }
 }
 
-/* Animación de rebote */
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
@@ -151,9 +138,6 @@ body {
   }
 }
 
-/* ============================================
-   HEADER Y NAVEGACIÓN
-   ============================================ */
 
 header {
   background-color: var(--bg-nav);
@@ -311,10 +295,6 @@ nav {
   color: var(--accent);
 }
 
-/* ============================================
-   HERO SECTION
-   ============================================ */
-
 .hero {
   background: linear-gradient(135deg, #0b0c10 0%, #131726 50%, #0e0a1e 100%);
   background-size: 200% 200%;
@@ -426,10 +406,6 @@ nav {
   transform: translateY(-2px);
 }
 
-/* ============================================
-   SECTIONS
-   ============================================ */
-
 section {
   max-width: 1200px;
   margin: 0 auto;
@@ -465,10 +441,6 @@ section {
   max-width: 500px;
   margin: 0 auto;
 }
-
-/* ============================================
-   CATÁLOGO
-   ============================================ */
 
 #catalogo {
   background-color: #0e1018;
@@ -600,19 +572,15 @@ section {
   animation: bounce 0.6s ease-out;
 }
 
-.card { /* O el nombre de la clase que uses para cada caja de juego */
+.card {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.card-description { /* La clase del párrafo del texto */
-  flex-grow: 1; /* Esto empujará el precio y el botón siempre hacia abajo */
+.card-description {
+  flex-grow: 1;
 }
-
-/* ============================================
-   TABLA
-   ============================================ */
 
 #tabla {
   background-color: var(--bg-dark);
@@ -731,10 +699,6 @@ tbody td {
   align-items: center;
 }
 
-/* ============================================
-   MULTIMEDIA
-   ============================================ */
-
 #multimedia {
   background-color: #0e1018;
   max-width: 100%;
@@ -823,20 +787,17 @@ tbody td {
   border: 1px solid var(--border);
   background-color: #000;
   transition: box-shadow 0.3s;
-  
-  /* Opcional: Le ponemos un ancho máximo para que no se vea gigantesco en pantallas muy anchas */
+
   max-width: 800px; 
-  margin: 0 auto; /* Esto centra el video en la pantalla */
+  margin: 0 auto;
 }
 
 .video-wrapper:hover {
   box-shadow: 0 8px 32px rgba(0, 229, 255, 0.15);
 }
 
-/* Cambiamos "video" por "iframe" */
 .video-wrapper iframe {
   width: 100%;
-  /* Mantiene la proporción perfecta de YouTube automáticamente */
   aspect-ratio: 16 / 9; 
   display: block;
   border: none;
@@ -876,10 +837,6 @@ tbody td {
 .audio-item audio {
   width: 100%;
 }
-
-/* ============================================
-   FORMULARIO
-   ============================================ */
 
 #formulario {
   background-color: var(--bg-dark);
@@ -1037,10 +994,6 @@ tbody td {
   animation: none;
 }
 
-/* ============================================
-   TOAST
-   ============================================ */
-
 .toast {
   position: fixed;
   bottom: 28px;
@@ -1065,10 +1018,6 @@ tbody td {
   transform: translateY(0);
   animation: bounce 0.6s ease-out;
 }
-
-/* ============================================
-   FOOTER
-   ============================================ */
 
 footer {
   background-color: var(--bg-nav);
@@ -1154,10 +1103,6 @@ footer {
   max-width: 100%;
   margin: 0;
 }
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
 
 @media (max-width: 900px) {
   .media-grid {
