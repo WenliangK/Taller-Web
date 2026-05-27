@@ -13,6 +13,11 @@
   --font-body: 'Exo 2', sans-serif;
 }
 
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1119,6 +1124,10 @@ footer {
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr); /* Corregido para tablets */
   }
 }
 

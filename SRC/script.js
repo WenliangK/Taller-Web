@@ -55,6 +55,8 @@ document.querySelectorAll('.btn-card').forEach(function (btn) {
     cartCount++;
     showToast('🛒 Juego agregado al carrito (' + cartCount + ')');
 
+    console.log('[PixelVault] Evento capturado: Se agregó un producto. Total en carrito: ' + cartCount);
+
     setTimeout(function () {
       btn.textContent = original;
       btn.classList.remove('added');
