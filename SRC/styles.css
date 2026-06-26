@@ -36,6 +36,10 @@ body {
   line-height: 1.6;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 
 @keyframes pulse {
   0% {
@@ -61,12 +65,12 @@ body {
 @keyframes glow {
   0%, 100% {
     text-shadow: 0 0 12px rgba(0, 229, 255, 0.6),
-                 0 0 24px rgba(0, 229, 255, 0.4);
+    0 0 24px rgba(0, 229, 255, 0.4);
   }
   50% {
     text-shadow: 0 0 20px rgba(0, 229, 255, 0.9),
-                 0 0 40px rgba(0, 229, 255, 0.6),
-                 0 0 60px rgba(0, 229, 255, 0.3);
+    0 0 40px rgba(0, 229, 255, 0.6),
+    0 0 60px rgba(0, 229, 255, 0.3);
   }
 }
 
@@ -403,6 +407,7 @@ nav {
   transition: border-color 0.3s, color 0.3s, transform 0.2s;
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .btn-secondary:hover {
@@ -535,6 +540,26 @@ section {
   color: var(--text-muted);
   margin-bottom: 16px;
   line-height: 1.5;
+}
+
+.btn-details {
+  width: 100%;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-bottom: 14px;
+  transition: border-color 0.3s, color 0.3s, background-color 0.3s;
+}
+
+.btn-details:hover {
+  border-color: var(--accent);
+  background-color: rgba(0, 229, 255, 0.08);
 }
 
 .game-footer {
@@ -682,23 +707,23 @@ tbody td {
 .badge-pc    { background: rgba(124, 77, 255, 0.2);  color: #b388ff; border: 1px solid #b388ff; }
 .badge-multi { background: rgba(0, 229, 255, 0.15);  color: var(--accent); border: 1px solid var(--accent); }
 
-.stock-ok  { 
-  color: var(--success); 
+.stock-ok  {
+  color: var(--success);
   font-weight: 600;
   display: flex;
   align-items: center;
 }
 
-.stock-low { 
-  color: #ffd740;        
+.stock-low {
+  color: #ffd740;
   font-weight: 600;
   display: flex;
   align-items: center;
   animation: blink 2s ease-in-out infinite;
 }
 
-.stock-no  { 
-  color: var(--error);   
+.stock-no  {
+  color: var(--error);
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -793,7 +818,7 @@ tbody td {
   background-color: #000;
   transition: box-shadow 0.3s;
 
-  max-width: 800px; 
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -803,7 +828,7 @@ tbody td {
 
 .video-wrapper iframe {
   width: 100%;
-  aspect-ratio: 16 / 9; 
+  aspect-ratio: 16 / 9;
   display: block;
   border: none;
 }
@@ -952,6 +977,23 @@ tbody td {
   animation: slideUp 0.3s ease-out;
 }
 
+.platform-msg {
+  display: none;
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: rgba(0, 229, 255, 0.08);
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+}
+
+.platform-msg.show {
+  display: block;
+  animation: slideUp 0.3s ease-out;
+}
+
 .form-check {
   display: flex;
   align-items: flex-start;
@@ -1022,6 +1064,294 @@ tbody td {
   opacity: 1;
   transform: translateY(0);
   animation: bounce 0.6s ease-out;
+}
+
+/* ===================== CARRITO FLOTANTE ===================== */
+
+.cart-float {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  background-color: var(--accent2);
+  color: #fff;
+  border: none;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(124, 77, 255, 0.4);
+  transition: transform 0.2s, box-shadow 0.3s;
+  z-index: 500;
+  animation: float 3s ease-in-out infinite;
+}
+
+.cart-float:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 12px 32px rgba(124, 77, 255, 0.55);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--accent);
+  color: var(--bg-dark);
+  font-size: 0.7rem;
+  font-weight: 700;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-dark);
+}
+
+.cart-badge.bump {
+  animation: bounce 0.5s ease-out;
+}
+
+/* ===================== VENTANAS MODALES ===================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 7, 12, 0.75);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 10000;
+}
+
+.modal-overlay.open {
+  display: flex;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.modal {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 32px;
+  animation: scaleIn 0.3s ease-out;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.modal-details-box {
+  max-width: 600px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.modal-media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-content {
+  padding: 28px 32px 32px;
+}
+
+.modal-details-box .modal-content {
+  padding: 24px 28px 28px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background-color: rgba(11, 12, 16, 0.6);
+  color: var(--text-main);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+  z-index: 2;
+}
+
+.modal-close:hover {
+  background-color: var(--error);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.modal-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.modal h3 {
+  font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.modal-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.modal-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.modal-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal-footer-end {
+  justify-content: flex-end;
+}
+
+.modal-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--success);
+}
+
+.modal-scroll {
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 24px;
+}
+
+.modal-scroll p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.modal-scroll h4 {
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin: 18px 0 8px;
+}
+
+/* ===================== CARRITO (MODAL 3) ===================== */
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.cart-empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111420;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  animation: slideUp 0.3s ease-out;
+}
+
+.cart-item-name {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.cart-item-price {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.cart-coupon {
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+  min-height: 20px;
+}
+
+.cart-coupon.success {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.cart-coupon.error {
+  color: var(--error);
+  font-weight: 600;
+}
+
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-coupon {
+  padding: 10px 18px;
+  font-size: 0.85rem;
+}
+
+.cart-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.cart-hint strong {
+  color: var(--accent);
+}
+
+.cart-total-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.cart-total {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--success);
 }
 
 footer {
@@ -1167,5 +1497,25 @@ footer {
 
   .games-grid {
     grid-template-columns: 1fr;
+  }
+
+  .modal {
+    padding: 24px 20px;
+  }
+
+  .modal-content {
+    padding: 20px 20px 24px;
+  }
+
+  .cart-summary {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cart-float {
+    width: 52px;
+    height: 52px;
+    left: 18px;
+    bottom: 18px;
   }
 }
