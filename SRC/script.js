@@ -1,5 +1,5 @@
 /* ============================================================
-   PIXELVAULT - SCRIPT PRINCIPAL
+   PIXELVAULT - SCRIPT PRINCIPAL (CON BACKEND SEGURO)
    ============================================================ */
 
 /* ------------------------------------------------------------
@@ -65,7 +65,6 @@ function showToast(message) {
 
 /* ------------------------------------------------------------
    4. SISTEMA GENÉRICO DE VENTANAS MODALES
-   (apertura/cierre reutilizable para todos los modales del sitio)
    ------------------------------------------------------------ */
 var openModalsCount = 0;
 
@@ -88,22 +87,14 @@ function closeModal(modal) {
 }
 
 document.querySelectorAll('.modal-overlay').forEach(function (overlay) {
-  // Cerrar al hacer clic en el fondo oscuro (fuera de la tarjeta del modal)
   overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) {
-      closeModal(overlay);
-    }
+    if (e.target === overlay) closeModal(overlay);
   });
-
-  // Cerrar con cualquier botón marcado con [data-close-modal]
   overlay.querySelectorAll('[data-close-modal]').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      closeModal(overlay);
-    });
+    btn.addEventListener('click', function () { closeModal(overlay); });
   });
 });
 
-// Cerrar todos los modales abiertos con la tecla Escape
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     document.querySelectorAll('.modal-overlay.open').forEach(function (overlay) {
@@ -113,70 +104,65 @@ document.addEventListener('keydown', function (e) {
 });
 
 /* ------------------------------------------------------------
-   5. AUTENTICACIÓN Y PERSISTENCIA (localStorage)
-   NOTA: este es un login simulado para fines académicos.
-   Las contraseñas se guardan en texto plano en el navegador,
-   esto NO es seguro para un entorno de producción real.
+   5. AUTENTICACIÓN SEGURA Y PERSISTENCIA DE DATOS
    ------------------------------------------------------------ */
+// Claves para el localStorage
 var STORAGE_KEYS = {
-  users: 'pixelvault_users',
-  session: 'pixelvault_session',
-  guestCart: 'pixelvault_guest_cart'
+  token: 'pixelvault_jwt_token', // Aquí se guarda la llave segura del backend
+  sessionUser: 'pixelvault_session_user',
+  guestCart: 'pixelvault_guest_cart',
+  profiles: 'pixelvault_local_profiles' // Solo para guardar historial de compras (no contraseñas)
 };
 
-var currentUserEmail = localStorage.getItem(STORAGE_KEYS.session);
+// Variables globales de sesión
+var currentUserToken = localStorage.getItem(STORAGE_KEYS.token);
+var currentUserEmail = localStorage.getItem(STORAGE_KEYS.sessionUser);
 
-function getUsers() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEYS.users)) || [];
-  } catch (e) {
-    return [];
+// Funciones para manejar el perfil local (compras y carrito)
+function getLocalProfiles() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.profiles)) || {}; }
+  catch (e) { return {}; }
+}
+
+function getLocalProfile(email) {
+  var profiles = getLocalProfiles();
+  if (!profiles[email]) {
+    profiles[email] = { email: email, registeredAt: new Date().toISOString(), cart: [], purchases: [], coupons: [], returns: [] };
+    localStorage.setItem(STORAGE_KEYS.profiles, JSON.stringify(profiles));
   }
+  return profiles[email];
 }
 
-function saveUsers(users) {
-  localStorage.setItem(STORAGE_KEYS.users, JSON.stringify(users));
+function updateLocalProfile(email, updaterFn) {
+  var profiles = getLocalProfiles();
+  if (!profiles[email]) profiles[email] = getLocalProfile(email);
+  updaterFn(profiles[email]);
+  localStorage.setItem(STORAGE_KEYS.profiles, JSON.stringify(profiles));
 }
 
-function setSessionEmail(email) {
-  if (email) {
-    localStorage.setItem(STORAGE_KEYS.session, email);
+function setSession(email, token) {
+  if (email && token) {
+    localStorage.setItem(STORAGE_KEYS.sessionUser, email);
+    localStorage.setItem(STORAGE_KEYS.token, token);
+    currentUserEmail = email;
+    currentUserToken = token;
   } else {
-    localStorage.removeItem(STORAGE_KEYS.session);
+    localStorage.removeItem(STORAGE_KEYS.sessionUser);
+    localStorage.removeItem(STORAGE_KEYS.token);
+    currentUserEmail = null;
+    currentUserToken = null;
   }
 }
 
-function findUserByEmail(email) {
-  var users = getUsers();
-  return users.find(function (u) {
-    return u.email.toLowerCase() === email.toLowerCase();
-  });
-}
-
-function updateUser(email, updaterFn) {
-  var users = getUsers();
-  var idx = users.findIndex(function (u) {
-    return u.email.toLowerCase() === email.toLowerCase();
-  });
-  if (idx === -1) return null;
-  updaterFn(users[idx]);
-  saveUsers(users);
-  return users[idx];
-}
-
+// Carrito
 function getGuestCart() {
-  try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEYS.guestCart)) || [];
-  } catch (e) {
-    return [];
-  }
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.guestCart)) || []; }
+  catch (e) { return []; }
 }
 
 function persistCart() {
   if (currentUserEmail) {
-    updateUser(currentUserEmail, function (user) {
-      user.cart = cart;
-    });
+    updateLocalProfile(currentUserEmail, function (user) { user.cart = cart; });
   } else {
     localStorage.setItem(STORAGE_KEYS.guestCart, JSON.stringify(cart));
   }
@@ -184,15 +170,8 @@ function persistCart() {
 
 function loadInitialCart() {
   if (currentUserEmail) {
-    var user = findUserByEmail(currentUserEmail);
-    if (user) {
-      cart = user.cart || [];
-    } else {
-      // La sesión apunta a un usuario que ya no existe en localStorage
-      setSessionEmail(null);
-      currentUserEmail = null;
-      cart = getGuestCart();
-    }
+    var user = getLocalProfile(currentUserEmail);
+    cart = user.cart || [];
   } else {
     cart = getGuestCart();
   }
@@ -201,35 +180,34 @@ function loadInitialCart() {
 function mergeGuestCartIntoUser(email) {
   var guestCart = getGuestCart();
   if (guestCart.length === 0) return;
-  updateUser(email, function (user) {
+  updateLocalProfile(email, function (user) {
     user.cart = (user.cart || []).concat(guestCart);
   });
   localStorage.removeItem(STORAGE_KEYS.guestCart);
 }
 
 function formatDate(isoString) {
-  if (!isoString) return '—';
+  if (!isoString) return '?';
   var date = new Date(isoString);
   return date.toLocaleDateString('es-PE', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
 function refreshAuthUI() {
-  var loggedIn = !!currentUserEmail;
+  var loggedIn = !!currentUserToken;
   document.querySelectorAll('.account-btn').forEach(function (btn) {
     btn.textContent = loggedIn ? 'Mi Perfil' : 'Iniciar sesión';
   });
 }
 
-// ---- Referencias a los modales de autenticación ----
+// ---- Referencias a modales ----
 var modalLogin = document.getElementById('modal-login');
 var modalRegister = document.getElementById('modal-register');
 var modalDashboard = document.getElementById('modal-dashboard');
 
-// ---- Botón de cuenta (header + menú móvil) ----
 document.querySelectorAll('.account-btn').forEach(function (btn) {
   btn.addEventListener('click', function (e) {
     e.preventDefault();
-    if (currentUserEmail) {
+    if (currentUserToken) {
       renderDashboard();
       openModal(modalDashboard);
     } else {
@@ -238,7 +216,6 @@ document.querySelectorAll('.account-btn').forEach(function (btn) {
   });
 });
 
-// ---- Cambiar entre modal de login y registro ----
 var goToRegister = document.getElementById('go-to-register');
 var goToLogin = document.getElementById('go-to-login');
 
@@ -258,65 +235,67 @@ if (goToLogin) {
   });
 }
 
-// ---- Formulario de inicio de sesión ----
-var loginForm = document.getElementById('login-form');
+// ============================================================
+// LOGICA DE CONEXIÓN AL BACKEND (NUEVO)
+// ============================================================
 
+// Formulario de inicio de sesión
+var loginForm = document.getElementById('login-form');
 if (loginForm) {
-  loginForm.addEventListener('submit', function (e) {
+  loginForm.addEventListener('submit', async function (e) { // <-- Agregamos async
     e.preventDefault();
 
-    loginForm.querySelectorAll('.form-group').forEach(function (group) {
-      group.classList.remove('has-error');
-    });
-
+    loginForm.querySelectorAll('.form-group').forEach(group => group.classList.remove('has-error'));
     var emailInput = document.getElementById('login-email');
     var passwordInput = document.getElementById('login-password');
     var email = emailInput.value.trim();
     var password = passwordInput.value;
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var isValid = true;
 
-    if (!email || !emailRegex.test(email)) {
-      showError(emailInput, 'Ingresa un correo electrónico válido.');
-      isValid = false;
-    }
-    if (!password || password.length < 6) {
-      showError(passwordInput, 'La contraseña debe tener al menos 6 caracteres.');
-      isValid = false;
-    }
+    if (!email) { showError(emailInput, 'Ingresa un correo válido.'); isValid = false; }
+    if (!password) { showError(passwordInput, 'Ingresa tu contraseña.'); isValid = false; }
     if (!isValid) return;
 
-    var user = findUserByEmail(email);
-    if (!user || user.password !== password) {
-      showError(passwordInput, 'Correo o contraseña incorrectos.');
-      return;
+    // Conexión al Servidor Node.js
+    try {
+      const respuesta = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: email, password: password }) // Enviamos datos
+      });
+
+      const datos = await respuesta.json();
+
+      if (respuesta.ok) {
+        // ¡Login exitoso! El servidor nos dio el Token
+        setSession(email, datos.token); // Guardamos token seguro
+        mergeGuestCartIntoUser(email);
+        loadInitialCart();
+        updateCartBadge();
+        renderCart();
+        refreshAuthUI();
+
+        loginForm.reset();
+        closeModal(modalLogin);
+        showToast('✅ ¡Bienvenido de nuevo, ' + email + '!');
+      } else {
+        // Error de credenciales desde la base de datos
+        showError(passwordInput, datos.error);
+      }
+    } catch (error) {
+      console.error("Error conectando al backend:", error);
+      showError(passwordInput, 'Error de conexión con el servidor.');
     }
-
-    mergeGuestCartIntoUser(user.email);
-    currentUserEmail = user.email;
-    setSessionEmail(user.email);
-    loadInitialCart();
-    updateCartBadge();
-    renderCart();
-    refreshAuthUI();
-
-    loginForm.reset();
-    closeModal(modalLogin);
-    showToast('👋 ¡Bienvenido de nuevo, ' + user.email + '!');
   });
 }
 
-// ---- Formulario de registro ----
+// Formulario de registro
 var registerForm = document.getElementById('register-form');
-
 if (registerForm) {
-  registerForm.addEventListener('submit', function (e) {
+  registerForm.addEventListener('submit', async function (e) { // <-- Agregamos async
     e.preventDefault();
 
-    registerForm.querySelectorAll('.form-group').forEach(function (group) {
-      group.classList.remove('has-error');
-    });
-
+    registerForm.querySelectorAll('.form-group').forEach(group => group.classList.remove('has-error'));
     var emailInput = document.getElementById('register-email');
     var passwordInput = document.getElementById('register-password');
     var confirmInput = document.getElementById('register-password-confirm');
@@ -324,66 +303,49 @@ if (registerForm) {
     var email = emailInput.value.trim();
     var password = passwordInput.value;
     var confirmPassword = confirmInput.value;
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var isValid = true;
 
-    if (!email || !emailRegex.test(email)) {
-      showError(emailInput, 'Ingresa un correo electrónico válido.');
-      isValid = false;
-    }
-    if (!password || password.length < 6) {
-      showError(passwordInput, 'La contraseña debe tener al menos 6 caracteres.');
-      isValid = false;
-    }
-    if (confirmPassword !== password) {
-      showError(confirmInput, 'Las contraseñas no coinciden.');
-      isValid = false;
-    }
+    if (!email) { showError(emailInput, 'Ingresa un correo.'); isValid = false; }
+    if (!password || password.length < 6) { showError(passwordInput, 'La contraseña debe tener al menos 6 caracteres.'); isValid = false; }
+    if (confirmPassword !== password) { showError(confirmInput, 'Las contraseñas no coinciden.'); isValid = false; }
     if (!isValid) return;
 
-    if (findUserByEmail(email)) {
-      showError(emailInput, 'Ya existe una cuenta registrada con este correo.');
-      return;
+    // Conexión al Servidor Node.js para Registrar
+    try {
+      const respuesta = await fetch('http://localhost:3000/api/registro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: email, password: password })
+      });
+
+      const datos = await respuesta.json();
+
+      if (respuesta.ok) {
+        // Registro exitoso, preparamos su perfil local para sus futuras compras
+        getLocalProfile(email);
+
+        registerForm.reset();
+        closeModal(modalRegister);
+        showToast('✅ ¡Cuenta creada con éxito! Ahora inicia sesión.');
+        openModal(modalLogin); // Lo mandamos a iniciar sesión
+      } else {
+        showError(emailInput, datos.error || 'El usuario ya existe.');
+      }
+    } catch (error) {
+      console.error("Error conectando al backend:", error);
+      showError(emailInput, 'Error de conexión con el servidor.');
     }
-
-    var newUser = {
-      email: email,
-      password: password,
-      registeredAt: new Date().toISOString(),
-      cart: [],
-      purchases: [],
-      coupons: [],
-      returns: []
-    };
-
-    var users = getUsers();
-    users.push(newUser);
-    saveUsers(users);
-
-    mergeGuestCartIntoUser(newUser.email);
-    currentUserEmail = newUser.email;
-    setSessionEmail(newUser.email);
-    loadInitialCart();
-    updateCartBadge();
-    renderCart();
-    refreshAuthUI();
-
-    registerForm.reset();
-    closeModal(modalRegister);
-    showToast('🎮 ¡Cuenta creada con éxito! Bienvenido a PixelVault.');
   });
 }
 
-// ---- Cerrar sesión ----
+// Cerrar sesión
 var logoutBtn = document.getElementById('logout-btn');
-
 if (logoutBtn) {
   logoutBtn.addEventListener('click', function () {
     var confirmLogout = confirm('¿Seguro que deseas cerrar sesión?');
     if (!confirmLogout) return;
 
-    currentUserEmail = null;
-    setSessionEmail(null);
+    setSession(null, null); // Borramos el Token y el usuario
     discountPercent = 0;
     if (cartCouponMsg) {
       cartCouponMsg.textContent = '';
@@ -398,6 +360,10 @@ if (logoutBtn) {
     showToast('Sesión cerrada. ¡Vuelve pronto!');
   });
 }
+
+// ============================================================
+// RESTO DEL CÓDIGO (Dashboard, Carrito, Detalles, etc)
+// ============================================================
 
 // ---- Pestañas del panel "Mi Perfil" ----
 document.querySelectorAll('.dashboard-tab').forEach(function (tabBtn) {
@@ -418,7 +384,7 @@ document.querySelectorAll('.dashboard-tab').forEach(function (tabBtn) {
 // ---- Renderizado del panel "Mi Perfil" ----
 function renderDashboard() {
   if (!currentUserEmail) return;
-  var user = findUserByEmail(currentUserEmail);
+  var user = getLocalProfile(currentUserEmail);
   if (!user) return;
 
   document.getElementById('dashboard-email').textContent = user.email;
@@ -500,7 +466,7 @@ function renderReturnsList(user) {
         '<div class="dashboard-item">' +
         '<div class="dashboard-item-info">' +
         '<strong>' + item.title + '</strong>' +
-        '<span>Comprado: ' + formatDate(item.date) + ' · Devuelto: ' + formatDate(item.returnDate) + '</span>' +
+        '<span>Comprado: ' + formatDate(item.date) + ' — Devuelto: ' + formatDate(item.returnDate) + '</span>' +
         '</div>' +
         '<span class="return-tag">Devuelto</span>' +
         '</div>';
@@ -511,8 +477,7 @@ function renderReturnsList(user) {
 
 function requestReturn(purchaseId) {
   if (!currentUserEmail) return;
-  var user = findUserByEmail(currentUserEmail);
-  if (!user) return;
+  var user = getLocalProfile(currentUserEmail);
 
   var purchase = (user.purchases || []).find(function (p) {
     return p.id === purchaseId;
@@ -522,7 +487,7 @@ function requestReturn(purchaseId) {
   var confirmReturn = confirm('¿Deseas solicitar la devolución de "' + purchase.title + '"?');
   if (!confirmReturn) return;
 
-  updateUser(currentUserEmail, function (u) {
+  updateLocalProfile(currentUserEmail, function (u) {
     u.purchases = (u.purchases || []).filter(function (p) {
       return p.id !== purchaseId;
     });
@@ -537,11 +502,11 @@ function requestReturn(purchaseId) {
   });
 
   renderDashboard();
-  showToast('↩️ Devolución solicitada para "' + purchase.title + '".');
+  showToast('🔄 Devolución solicitada para "' + purchase.title + '".');
 }
 
 /* ------------------------------------------------------------
-   6. MODAL 1 — DETALLES DEL JUEGO
+   6. MODAL 1 - DETALLES DEL JUEGO
    ------------------------------------------------------------ */
 var gameDetails = {
   cs2: {
@@ -614,7 +579,6 @@ document.querySelectorAll('.btn-details').forEach(function (btn) {
     var data = gameDetails[gameId];
     if (!data || !modalDetails) return;
 
-    // Manipulación del DOM: textContent + innerHTML + atributos de imagen
     document.getElementById('modal-details-title').textContent = data.title;
     document.getElementById('modal-details-platform').textContent = data.platform;
     document.getElementById('modal-details-meta').innerHTML =
@@ -631,7 +595,7 @@ document.querySelectorAll('.btn-details').forEach(function (btn) {
 });
 
 /* ------------------------------------------------------------
-   7. MODAL 2 — TÉRMINOS Y CONDICIONES
+   7. MODAL 2 - TÉRMINOS Y CONDICIONES
    ------------------------------------------------------------ */
 var termsLink = document.getElementById('terms-link');
 var modalTerms = document.getElementById('modal-terms');
@@ -644,7 +608,7 @@ if (termsLink && modalTerms) {
 }
 
 /* ------------------------------------------------------------
-   8. MODAL 3 — CARRITO DE COMPRAS (con persistencia)
+   8. MODAL 3 - CARRITO DE COMPRAS
    ------------------------------------------------------------ */
 var cart = [];
 var discountPercent = 0;
@@ -663,7 +627,7 @@ function updateCartBadge() {
   if (!cartBadge) return;
   cartBadge.textContent = cart.length;
   cartBadge.classList.remove('bump');
-  void cartBadge.offsetWidth; // fuerza el reflow para reiniciar la animación
+  void cartBadge.offsetWidth;
   cartBadge.classList.add('bump');
 }
 
@@ -708,13 +672,12 @@ document.querySelectorAll('.btn-card').forEach(function (btn) {
     var title = btn.getAttribute('data-title') || 'Juego';
     var price = parseFloat(btn.getAttribute('data-price')) || 0;
 
-    btn.textContent = '✓ Agregado';
+    btn.textContent = '✅ Agregado';
     btn.classList.add('added');
     btn.disabled = true;
 
     addToCart(title, price);
     showToast('🛒 ' + title + ' agregado al carrito (' + cart.length + ')');
-    console.log('[PixelVault] Evento capturado: se agregó "' + title + '". Total en carrito: ' + cart.length);
 
     setTimeout(function () {
       btn.textContent = original;
@@ -731,15 +694,10 @@ if (cartFloatBtn && modalCart) {
   });
 }
 
-// ENTRADA/SALIDA: prompt para aplicar el cupón
 if (applyCouponBtn) {
   applyCouponBtn.addEventListener('click', function () {
     var code = prompt('Ingresa tu código de descuento:');
-
-    if (code === null) {
-      return; // el usuario presionó "Cancelar"
-    }
-
+    if (code === null) return;
     code = code.trim().toUpperCase();
 
     if (code === '') {
@@ -754,16 +712,14 @@ if (applyCouponBtn) {
       cartCouponMsg.classList.add('success');
 
       if (currentUserEmail) {
-        updateUser(currentUserEmail, function (user) {
+        updateLocalProfile(currentUserEmail, function (user) {
           user.coupons = user.coupons || [];
           user.coupons.push({ code: code, discount: discountPercent, date: new Date().toISOString() });
         });
       }
-
       renderCart();
-      showToast('🎉 Cupón aplicado correctamente');
+      showToast('🎟️ Cupón aplicado correctamente');
     } else {
-      // SALIDA: alert cuando el cupón es inválido
       discountPercent = 0;
       cartCouponMsg.textContent = '';
       cartCouponMsg.classList.remove('success');
@@ -781,7 +737,7 @@ if (checkoutBtn) {
       return;
     }
 
-    if (!currentUserEmail) {
+    if (!currentUserToken) { // Validamos si tiene el Token seguro
       showToast('Inicia sesión para completar tu compra');
       closeModal(modalCart);
       openModal(modalLogin);
@@ -803,7 +759,7 @@ if (checkoutBtn) {
         };
       });
 
-      updateUser(currentUserEmail, function (user) {
+      updateLocalProfile(currentUserEmail, function (user) {
         user.purchases = (user.purchases || []).concat(purchasedItems);
         user.cart = [];
       });
@@ -821,7 +777,7 @@ if (checkoutBtn) {
 }
 
 /* ------------------------------------------------------------
-   9. SELECT DE PLATAFORMA — EVENTO change (onchange)
+   9. SELECT DE PLATAFORMA - EVENTO change
    ------------------------------------------------------------ */
 var platformSelect = document.getElementById('plataforma');
 var platformMsg = document.getElementById('platform-msg');
@@ -848,7 +804,7 @@ if (platformSelect && platformMsg) {
 }
 
 /* ------------------------------------------------------------
-   10. FORMULARIO DE CONTACTO (validación + confirm de envío)
+   10. FORMULARIO DE CONTACTO
    ------------------------------------------------------------ */
 var form = document.getElementById('contact-form');
 
@@ -895,22 +851,19 @@ if (form) {
       isValid = false;
     }
 
-    if (!isValid) {
-      return;
-    }
+    if (!isValid) return;
 
-    // ENTRADA/SALIDA: confirm antes de enviar el formulario
     var deseaEnviar = confirm('¿Estás seguro de enviar esta consulta?');
 
     if (deseaEnviar) {
-      showToast('✅ Mensaje enviado correctamente. ¡Gracias!');
+      showToast('📩 Mensaje enviado correctamente. ¡Gracias!');
       form.reset();
       if (platformMsg) {
         platformMsg.textContent = '';
         platformMsg.classList.remove('show');
       }
     } else {
-      showToast('✋ Envío cancelado. Puedes revisar tu mensaje.');
+      showToast('❌ Envío cancelado. Puedes revisar tu mensaje.');
     }
   });
 }
@@ -919,9 +872,7 @@ if (form) {
    11. AÑO ACTUAL EN EL FOOTER
    ------------------------------------------------------------ */
 var yearEl = document.getElementById('current-year');
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* ------------------------------------------------------------
    12. INICIALIZACIÓN
