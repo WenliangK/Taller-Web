@@ -4,5 +4,6 @@
 .DS_Store
 Thumbs.db
 node_modules/
+scurity.env
 backend/scurity.env
 .idea/
