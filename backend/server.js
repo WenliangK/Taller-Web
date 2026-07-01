@@ -7,14 +7,12 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors()); // Permite que tu HTML se comunique con este servidor
+app.use(cors());
 
-// Conexión a Neon PostgreSQL
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
 });
 
-// Crear la tabla de usuarios automáticamente si no existe
 const initDB = async () => {
     await pool.query(`
         CREATE TABLE IF NOT EXISTS usuarios (
@@ -26,7 +24,6 @@ const initDB = async () => {
 };
 initDB();
 
-// Ruta 1: Registrar un usuario de prueba (Solo úsalo una vez para crear tu usuario)
 app.post('/api/registro', async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -38,21 +35,17 @@ app.post('/api/registro', async (req, res) => {
     }
 });
 
-// Ruta 2: Inicio de Sesión seguro
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
     try {
-        // Buscar el usuario en Neon
         const resultado = await pool.query('SELECT * FROM usuarios WHERE username = $1', [username]);
         if (resultado.rows.length === 0) return res.status(401).json({ error: 'Usuario no encontrado' });
 
         const usuario = resultado.rows[0];
 
-        // Comparar contraseñas de forma segura
         const passwordValida = await bcrypt.compare(password, usuario.password);
         if (!passwordValida) return res.status(401).json({ error: 'Contraseña incorrecta' });
 
-        // Generar el pase VIP (Token JWT)
         const token = jwt.sign({ id: usuario.id, username: usuario.username }, process.env.JWT_SECRET, { expiresIn: '2h' });
 
         res.json({ mensaje: 'Login exitoso', token });
