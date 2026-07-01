@@ -5,4 +5,3 @@ Instalar NodeJs (Linux): sudo dnf install nodejs -y
 2. npm install
 3: Copiar credenciales
 Inicializar servidor: node server.js
-

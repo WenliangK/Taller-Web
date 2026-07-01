@@ -1066,7 +1066,6 @@ tbody td {
   animation: bounce 0.6s ease-out;
 }
 
-/* ===================== CARRITO FLOTANTE ===================== */
 
 .cart-float {
   position: fixed;
@@ -1113,8 +1112,6 @@ tbody td {
 .cart-badge.bump {
   animation: bounce 0.5s ease-out;
 }
-
-/* ===================== VENTANAS MODALES ===================== */
 
 .modal-overlay {
   position: fixed;
@@ -1287,8 +1284,6 @@ tbody td {
   margin: 18px 0 8px;
 }
 
-/* ===================== CARRITO (MODAL 3) ===================== */
-
 .cart-items {
   display: flex;
   flex-direction: column;
@@ -1380,8 +1375,6 @@ tbody td {
   font-weight: 700;
   color: var(--success);
 }
-
-/* ===================== MI PERFIL (MODAL 6) ===================== */
 
 .dashboard-tabs {
   display: flex;

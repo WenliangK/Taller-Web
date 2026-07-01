@@ -1,10 +1,3 @@
-/* ============================================================
-   PIXELVAULT - SCRIPT PRINCIPAL (CON BACKEND SEGURO)
-   ============================================================ */
-
-/* ------------------------------------------------------------
-   1. MENÚ RESPONSIVO
-   ------------------------------------------------------------ */
 const menu = document.getElementById('menu');
 const mobileMenu = document.getElementById('mobile-menu');
 
@@ -24,9 +17,6 @@ if (menu && mobileMenu) {
   });
 }
 
-/* ------------------------------------------------------------
-   2. NAVEGACIÓN ACTIVA AL HACER SCROLL
-   ------------------------------------------------------------ */
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 
@@ -48,9 +38,6 @@ function highlightNav() {
 }
 window.addEventListener('scroll', highlightNav);
 
-/* ------------------------------------------------------------
-   3. SISTEMA DE NOTIFICACIONES (TOAST)
-   ------------------------------------------------------------ */
 var toastTimer = null;
 function showToast(message) {
   var toast = document.getElementById('toast');
@@ -63,9 +50,6 @@ function showToast(message) {
   }, 2800);
 }
 
-/* ------------------------------------------------------------
-   4. SISTEMA GENÉRICO DE VENTANAS MODALES
-   ------------------------------------------------------------ */
 var openModalsCount = 0;
 
 function openModal(modal) {
@@ -103,22 +87,16 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-/* ------------------------------------------------------------
-   5. AUTENTICACIÓN SEGURA Y PERSISTENCIA DE DATOS
-   ------------------------------------------------------------ */
-// Claves para el localStorage
 var STORAGE_KEYS = {
-  token: 'pixelvault_jwt_token', // Aquí se guarda la llave segura del backend
+  token: 'pixelvault_jwt_token',
   sessionUser: 'pixelvault_session_user',
   guestCart: 'pixelvault_guest_cart',
-  profiles: 'pixelvault_local_profiles' // Solo para guardar historial de compras (no contraseñas)
+  profiles: 'pixelvault_local_profiles'
 };
 
-// Variables globales de sesión
 var currentUserToken = localStorage.getItem(STORAGE_KEYS.token);
 var currentUserEmail = localStorage.getItem(STORAGE_KEYS.sessionUser);
 
-// Funciones para manejar el perfil local (compras y carrito)
 function getLocalProfiles() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.profiles)) || {}; }
   catch (e) { return {}; }
@@ -154,7 +132,6 @@ function setSession(email, token) {
   }
 }
 
-// Carrito
 function getGuestCart() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEYS.guestCart)) || []; }
   catch (e) { return []; }
@@ -199,7 +176,6 @@ function refreshAuthUI() {
   });
 }
 
-// ---- Referencias a modales ----
 var modalLogin = document.getElementById('modal-login');
 var modalRegister = document.getElementById('modal-register');
 var modalDashboard = document.getElementById('modal-dashboard');
@@ -235,14 +211,9 @@ if (goToLogin) {
   });
 }
 
-// ============================================================
-// LOGICA DE CONEXIÓN AL BACKEND (NUEVO)
-// ============================================================
-
-// Formulario de inicio de sesión
 var loginForm = document.getElementById('login-form');
 if (loginForm) {
-  loginForm.addEventListener('submit', async function (e) { // <-- Agregamos async
+  loginForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     loginForm.querySelectorAll('.form-group').forEach(group => group.classList.remove('has-error'));
@@ -256,19 +227,17 @@ if (loginForm) {
     if (!password) { showError(passwordInput, 'Ingresa tu contraseña.'); isValid = false; }
     if (!isValid) return;
 
-    // Conexión al Servidor Node.js
     try {
       const respuesta = await fetch('http://localhost:3000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: email, password: password }) // Enviamos datos
+        body: JSON.stringify({ username: email, password: password })
       });
 
       const datos = await respuesta.json();
 
       if (respuesta.ok) {
-        // ¡Login exitoso! El servidor nos dio el Token
-        setSession(email, datos.token); // Guardamos token seguro
+        setSession(email, datos.token);
         mergeGuestCartIntoUser(email);
         loadInitialCart();
         updateCartBadge();
@@ -279,7 +248,6 @@ if (loginForm) {
         closeModal(modalLogin);
         showToast('✅ ¡Bienvenido de nuevo, ' + email + '!');
       } else {
-        // Error de credenciales desde la base de datos
         showError(passwordInput, datos.error);
       }
     } catch (error) {
@@ -289,10 +257,9 @@ if (loginForm) {
   });
 }
 
-// Formulario de registro
 var registerForm = document.getElementById('register-form');
 if (registerForm) {
-  registerForm.addEventListener('submit', async function (e) { // <-- Agregamos async
+  registerForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     registerForm.querySelectorAll('.form-group').forEach(group => group.classList.remove('has-error'));
@@ -310,7 +277,6 @@ if (registerForm) {
     if (confirmPassword !== password) { showError(confirmInput, 'Las contraseñas no coinciden.'); isValid = false; }
     if (!isValid) return;
 
-    // Conexión al Servidor Node.js para Registrar
     try {
       const respuesta = await fetch('http://localhost:3000/api/registro', {
         method: 'POST',
@@ -321,13 +287,12 @@ if (registerForm) {
       const datos = await respuesta.json();
 
       if (respuesta.ok) {
-        // Registro exitoso, preparamos su perfil local para sus futuras compras
         getLocalProfile(email);
 
         registerForm.reset();
         closeModal(modalRegister);
         showToast('✅ ¡Cuenta creada con éxito! Ahora inicia sesión.');
-        openModal(modalLogin); // Lo mandamos a iniciar sesión
+        openModal(modalLogin);
       } else {
         showError(emailInput, datos.error || 'El usuario ya existe.');
       }
@@ -338,14 +303,13 @@ if (registerForm) {
   });
 }
 
-// Cerrar sesión
 var logoutBtn = document.getElementById('logout-btn');
 if (logoutBtn) {
   logoutBtn.addEventListener('click', function () {
     var confirmLogout = confirm('¿Seguro que deseas cerrar sesión?');
     if (!confirmLogout) return;
 
-    setSession(null, null); // Borramos el Token y el usuario
+    setSession(null, null);
     discountPercent = 0;
     if (cartCouponMsg) {
       cartCouponMsg.textContent = '';
@@ -361,11 +325,6 @@ if (logoutBtn) {
   });
 }
 
-// ============================================================
-// RESTO DEL CÓDIGO (Dashboard, Carrito, Detalles, etc)
-// ============================================================
-
-// ---- Pestañas del panel "Mi Perfil" ----
 document.querySelectorAll('.dashboard-tab').forEach(function (tabBtn) {
   tabBtn.addEventListener('click', function () {
     var target = tabBtn.getAttribute('data-tab');
@@ -381,7 +340,6 @@ document.querySelectorAll('.dashboard-tab').forEach(function (tabBtn) {
   });
 });
 
-// ---- Renderizado del panel "Mi Perfil" ----
 function renderDashboard() {
   if (!currentUserEmail) return;
   var user = getLocalProfile(currentUserEmail);
@@ -505,9 +463,6 @@ function requestReturn(purchaseId) {
   showToast('🔄 Devolución solicitada para "' + purchase.title + '".');
 }
 
-/* ------------------------------------------------------------
-   6. MODAL 1 - DETALLES DEL JUEGO
-   ------------------------------------------------------------ */
 var gameDetails = {
   cs2: {
     title: 'Counter-Strike 2',
@@ -594,9 +549,6 @@ document.querySelectorAll('.btn-details').forEach(function (btn) {
   });
 });
 
-/* ------------------------------------------------------------
-   7. MODAL 2 - TÉRMINOS Y CONDICIONES
-   ------------------------------------------------------------ */
 var termsLink = document.getElementById('terms-link');
 var modalTerms = document.getElementById('modal-terms');
 
@@ -607,9 +559,6 @@ if (termsLink && modalTerms) {
   });
 }
 
-/* ------------------------------------------------------------
-   8. MODAL 3 - CARRITO DE COMPRAS
-   ------------------------------------------------------------ */
 var cart = [];
 var discountPercent = 0;
 var validCoupons = { PIXEL10: 10, GAMER20: 20, VAULT15: 15 };
@@ -737,7 +686,7 @@ if (checkoutBtn) {
       return;
     }
 
-    if (!currentUserToken) { // Validamos si tiene el Token seguro
+    if (!currentUserToken) {
       showToast('Inicia sesión para completar tu compra');
       closeModal(modalCart);
       openModal(modalLogin);
@@ -775,10 +724,6 @@ if (checkoutBtn) {
     }
   });
 }
-
-/* ------------------------------------------------------------
-   9. SELECT DE PLATAFORMA - EVENTO change
-   ------------------------------------------------------------ */
 var platformSelect = document.getElementById('plataforma');
 var platformMsg = document.getElementById('platform-msg');
 
@@ -803,9 +748,6 @@ if (platformSelect && platformMsg) {
   });
 }
 
-/* ------------------------------------------------------------
-   10. FORMULARIO DE CONTACTO
-   ------------------------------------------------------------ */
 var form = document.getElementById('contact-form');
 
 function showError(input, message) {
@@ -868,15 +810,9 @@ if (form) {
   });
 }
 
-/* ------------------------------------------------------------
-   11. AÑO ACTUAL EN EL FOOTER
-   ------------------------------------------------------------ */
 var yearEl = document.getElementById('current-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* ------------------------------------------------------------
-   12. INICIALIZACIÓN
-   ------------------------------------------------------------ */
 loadInitialCart();
 updateCartBadge();
 renderCart();
