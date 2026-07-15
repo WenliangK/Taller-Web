@@ -1,942 +1,392 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="PixelVault - Tu tienda de videojuegos online. Encuentra los mejores títulos para todas las plataformas." />
-  <meta name="keywords" content="videojuegos, tienda, PS5, Xbox, Nintendo, PC, gaming" />
-  <meta name="author" content="PixelVault Store" />
-  <title>PixelVault | Tienda de Videojuegos</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PixelVault, tienda digital de videojuegos para PC, PlayStation, Xbox y Nintendo. Catálogo, ofertas y atención personalizada.">
+  <meta name="keywords" content="videojuegos, tienda gamer, PlayStation, Xbox, Nintendo, PC, Steam, Perú">
+  <meta name="author" content="PixelVault Store">
+  <meta name="theme-color" content="#080b14">
+  <title>PixelVault | Tu próxima aventura comienza aquí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23080b14'/%3E%3Cpath d='M18 23h28a8 8 0 0 1 8 8v13a7 7 0 0 1-12 5l-5-5H27l-5 5a7 7 0 0 1-12-5V31a8 8 0 0 1 8-8Z' fill='none' stroke='%2368f6ff' stroke-width='4'/%3E%3Cpath d='M22 31v10M17 36h10M41 33h.1M47 39h.1' stroke='%23a78bfa' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-<header>
-  <nav>
-    <a href="#inicio" class="logo">
-      <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-      </svg>
-      Pixel<span>Vault</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#catalogo">Catálogo</a></li>
-      <li><a href="#tabla">Precios</a></li>
-      <li><a href="#multimedia">Multimedia</a></li>
-      <li><a href="#" class="account-btn">Iniciar sesión</a></li>
-      <li><a href="#formulario" class="nav-cta">Contáctanos</a></li>
-    </ul>
-
-    <button class="menu" id="menu" aria-label="Abrir menú" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
-
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="#catalogo">Catálogo</a>
-    <a href="#tabla">Precios</a>
-    <a href="#multimedia">Multimedia</a>
-    <a href="#" class="account-btn">Iniciar sesión</a>
-    <a href="#formulario">Contáctanos</a>
-  </div>
-</header>
-
-<main id="inicio">
-
-  <div class="hero">
-      <span class="hero-badge">
-        <svg class="badge-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="8" y1="6" x2="21" y2="6"></line>
-          <line x1="8" y1="12" x2="21" y2="12"></line>
-          <line x1="8" y1="18" x2="21" y2="18"></line>
-          <line x1="3" y1="6" x2="3.01" y2="6"></line>
-          <line x1="3" y1="12" x2="3.01" y2="12"></line>
-          <line x1="3" y1="18" x2="3.01" y2="18"></line>
-        </svg>
-        NUEVA TEMPORADA 2025
-      </span>
-    <h1>Tu próximo juego favorito<br />te está esperando en <span class="highlight">PixelVault</span></h1>
-    <p>Explora nuestro catálogo con los mejores títulos para PS5, Xbox, Nintendo y PC. Precios imbatibles y envío rápido.</p>
-    <div class="hero-buttons">
-      <a href="#catalogo" class="btn-primary">
-        Ver Catálogo
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 8px;">
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
+  <header class="site-header" id="site-header">
+    <nav class="navbar container" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="PixelVault, ir al inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12a4 4 0 0 1 4 4v5a3 3 0 0 1-5.12 2.12L15 17.25H9l-1.88 1.87A3 3 0 0 1 2 17v-5a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.8"/><path d="M7 11v4M5 13h4M16.5 12h.01M19 14h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <span>Pixel<span>Vault</span></span>
       </a>
-      <a href="#formulario" class="btn-secondary">
-        Más información
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
-      </a>
-    </div>
-  </div>
 
-  <section id="catalogo">
-    <div class="section-header">
-      <span class="section-label">// NUESTROS JUEGOS</span>
-      <h2>Catálogo Destacado</h2>
-      <p>Selección curada con los títulos más populares de la temporada.</p>
-    </div>
-
-    <div class="games-grid">
-
-      <div class="game-card">
-        <img
-                src="https://static.wikia.nocookie.net/logopedia/images/4/49/Counter-Strike_2_%28Icon%29.png/revision/latest?cb=20230330015359"
-                alt="CS2"
-                loading="lazy"
-        />
-        <div class="game-card-body">
-          <p class="game-platform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-            PC/STEAM
-          </p>
-          <h3>Counter-Strike 2</h3>
-          <p>Durante las dos últimas décadas, Counter-Strike ha proporcionado una experiencia competitiva de primer nivel para los millones de jugadores de todo el mundo que contribuyeron a darle forma. Ahora el próximo capítulo en la historia de CS está a punto de comenzar. Hablamos de Counter-Strike 2.</p>
-          <button class="btn-details" type="button" data-game-id="cs2">
-            Ver detalles
-          </button>
-          <div class="game-footer">
-            <span class="game-price">S/. 58</span>
-            <button class="btn-card" type="button" data-title="Counter-Strike 2" data-price="58">
-              Agregar
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd5gr2YHx65IVjx04i5nnj9PrYbAayydNipA&s"
-                alt="Minecraft"
-                loading="lazy"
-        />
-        <div class="game-card-body">
-          <p class="game-platform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-              <line x1="12" y1="18" x2="12.01" y2="18"></line>
-            </svg>
-            Xbox Series X
-          </p>
-          <h3>Minecraft</h3>
-          <p>Minecraft es un juego formado por
-            bloques, criaturas y comunidades.
-            La elección es tuya: sobrevivir a la
-            noche o crear una obra de arte. Es
-            un videojuego de construcción de
-            tipo "mundo abierto" o en inglés
-            sandbox creado originalmente por
-            el sueco Markus Persson, que creó
-            posteriormente Mojang Studios.
-          </p>
-          <button class="btn-details" type="button" data-game-id="minecraft">
-            Ver detalles
-          </button>
-          <div class="game-footer">
-            <span class="game-price">S/. 110</span>
-            <button class="btn-card" type="button" data-title="Minecraft" data-price="110">
-              Agregar
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <img
-                src="https://mario.wiki.gallery/images/thumb/9/90/Mario_Party_2021_Logo_.png/250px-Mario_Party_2021_Logo_.png"
-                alt="Mario Party"
-                loading="lazy"
-        />
-        <div class="game-card-body">
-          <p class="game-platform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-              <line x1="12" y1="18" x2="12.01" y2="18"></line>
-            </svg>
-            Nintendo Switch
-          </p>
-          <h3>Mario Party</h3>
-          <p>Mario Party es una serie de juegos
-            de fiesta sumamente divertidos,
-            presentando a los personajes de la
-            popular franquicia de Super Mario.
-            En estas entregas, hasta cuatro
-            personajes controlados por humanos
-            o por la computadora compiten
-            en un tablero virtual que está
-            intercalado.
-          </p>
-          <button class="btn-details" type="button" data-game-id="mario-party">
-            Ver detalles
-          </button>
-          <div class="game-footer">
-            <span class="game-price">S/. 150</span>
-            <button class="btn-card" type="button" data-title="Mario Party" data-price="150">
-              Agregar
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <img
-                src="https://image.api.playstation.com/vulcan/ap/rnd/202207/2509/85p2Dwh5iDhUzRKe40QeNYh3.png"
-                alt="Resident Evil 4 Remake"
-                loading="lazy"
-        />
-        <div class="game-card-body">
-          <p class="game-platform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-            PC / Steam
-          </p>
-          <h3>Resident Evil 4 - Remake</h3>
-          <p>
-            Resident Evil 4, también conocido
-            en Japón como Biohazard 4, es un
-            videojuego de acción y aventura de
-            disparos en tercera persona enfocado
-            en el terror y la supervivencia. Fue
-            desarrollado y publicado por Capcom.
-            Este remake moderniza por completo
-            el clásico original para ofrecer.
-          </p>
-          <button class="btn-details" type="button" data-game-id="re4">
-            Ver detalles
-          </button>
-          <div class="game-footer">
-            <span class="game-price">S/. 170</span>
-            <button class="btn-card" type="button" data-title="Resident Evil 4 - Remake" data-price="170">
-              Agregar
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <img
-                src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/976730/header.jpg?t=1774466074"
-                alt="Halo: The Master Chief Collection"
-                loading="lazy"
-        />
-        <div class="game-card-body">
-          <p class="game-platform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-              <line x1="12" y1="18" x2="12.01" y2="18"></line>
-            </svg>
-            PS5 / Xbox
-          </p>
-          <h3>Halo: The Master Chief Collection</h3>
-          <p>
-            Halo: The Master Chief Collection
-            es una recopilación definitiva de
-            los emblemáticos juegos de disparos
-            en primera persona desarrollados
-            por 343 Industries. Revive toda
-            la épica saga del Jefe Maestro con
-            gráficos mejorados y un multijugador
-            vibrante, publicado oficialmente.
-          </p>
-          <button class="btn-details" type="button" data-game-id="halo">
-            Ver detalles
-          </button>
-          <div class="game-footer">
-            <span class="game-price">S/. 200</span>
-            <button class="btn-card" type="button" data-title="Halo: The Master Chief Collection" data-price="200">
-              Agregar
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <img
-                src="https://static.wikia.nocookie.net/esgta/images/1/1b/Car%C3%A1tula_GTA_V.jpg/revision/latest/scale-to-width-down/1200?cb=20130402191528"
-                alt="GTAV"
-                loading="lazy"
-        />
-        <div class="game-card-body">
-          <p class="game-platform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-            PC
-          </p>
-          <h3>GTA V Online</h3>
-          <p>
-            Experimenta GTA Online, un inmenso
-            universo en línea dinámico y en
-            constante evolución diseñado para
-            albergar hasta 30 jugadores, donde
-            puedes pasar de ser un pandillero
-            y estafador callejero a convertirte
-            absolutamente en el máximo capo y
-            líder de tu propio imperio criminal
-            en la ciudad de Los Santos.
-          </p>
-          <button class="btn-details" type="button" data-game-id="gtav">
-            Ver detalles
-          </button>
-          <div class="game-footer">
-            <span class="game-price">S/. 160</span>
-            <button class="btn-card" type="button" data-title="GTA V Online" data-price="160">
-              Agregar
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <hr class="full-divider" />
-
-  <section id="tabla">
-    <div class="section-header">
-      <span class="section-label">// PRECIOS Y STOCK</span>
-      <h2>Comparativa Completa</h2>
-      <p>Revisa disponibilidad, plataforma y precio de todos nuestros títulos.</p>
-    </div>
-
-    <div class="table-wrapper">
-      <table>
-        <caption>Tabla actualizada · Temporada 2026 · Precios en Soles (S/.)</caption>
-        <thead>
-        <tr>
-          <th scope="col">Título</th>
-          <th scope="col">Género</th>
-          <th scope="col">Plataforma</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Stock</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td><strong>Counter-Strike 2</strong></td>
-          <td>Shooter</td>
-          <td><span class="badge badge-pc">PC</span></td>
-          <td>S/. 58</td>
-          <td class="stock-ok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Disponible
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Minecraft</strong></td>
-          <td>Sandbox</td>
-          <td><span class="badge badge-multi">Multi</span></td>
-          <td>S/. 110</td>
-          <td class="stock-ok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Disponible
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Mario Party</strong></td>
-          <td>Party</td>
-          <td><span class="badge badge-nin">Nintendo</span></td>
-          <td>S/. 150</td>
-          <td class="stock-low">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-              <line x1="12" y1="9" x2="12" y2="13"></line>
-              <line x1="12" y1="17" x2="12.01" y2="17"></line>
-            </svg>
-            Pocas unidades
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Resident Evil 4 - Remake</strong></td>
-          <td>Survival Horror</td>
-          <td><span class="badge badge-multi">Multi</span></td>
-          <td>S/. 170</td>
-          <td class="stock-ok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Disponible
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Halo: The Master Chief Collection</strong></td>
-          <td>Shooter</td>
-          <td><span class="badge badge-xbox">Xbox</span></td>
-          <td>S/. 200</td>
-          <td class="stock-ok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Disponible
-          </td>
-        </tr>
-        <tr>
-          <td><strong>GTA V Online</strong></td>
-          <td>Action</td>
-          <td><span class="badge badge-multi">Multi</span></td>
-          <td>S/. 160</td>
-          <td class="stock-ok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Disponible
-          </td>
-        </tr>
-        <tr>
-          <td><strong>The Legend of Zelda: TOTK</strong></td>
-          <td>Adventure</td>
-          <td><span class="badge badge-nin">Nintendo</span></td>
-          <td>S/. 280</td>
-          <td class="stock-no">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="15" y1="9" x2="9" y2="15"></line>
-              <line x1="9" y1="9" x2="15" y2="15"></line>
-            </svg>
-            Agotado
-          </td>
-        </tr>
-        <tr>
-          <td><strong>FIFA 24</strong></td>
-          <td>Sports</td>
-          <td><span class="badge badge-multi">Multi</span></td>
-          <td>S/. 220</td>
-          <td class="stock-ok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Disponible
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Elden Ring</strong></td>
-          <td>RPG</td>
-          <td><span class="badge badge-ps5">PS5</span></td>
-          <td>S/. 250</td>
-          <td class="stock-low">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
-              <line x1="12" y1="9" x2="12" y2="13"></line>
-              <line x1="12" y1="17" x2="12.01" y2="17"></line>
-            </svg>
-            Pocas unidades
-          </td>
-        </tr>
-        <tr>
-          <td><strong>God of War Ragnarök</strong></td>
-          <td>Action-Adventure</td>
-          <td><span class="badge badge-ps5">PS5</span></td>
-          <td>S/. 270</td>
-          <td class="stock-ok">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Disponible
-          </td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <hr class="full-divider" />
-
-  <section id="multimedia">
-    <div class="section-header">
-      <span class="section-label">// GALERÍA</span>
-      <h2>Multimedia</h2>
-      <p>Capturas, tráilers y bandas sonoras de nuestros juegos destacados.</p>
-    </div>
-    <br>
-
-    <div class="media-container">
-      <div class="gallery-grid" style="margin-bottom: 1.5rem;">
-        <div class="gallery-item">
-          <img src="https://gaming-cdn.com/images/products/9459/orig/counter-strike-2-pc-mac-juego-steam-cover.jpg?v=1742208833" alt="CS:GO Gameplay" loading="lazy" />
-          <div class="gallery-caption">Counter-Strike 2</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png" alt="God of War" loading="lazy" />
-          <div class="gallery-caption">God of War Ragnarök</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://www.allkeyshop.com/blog/wp-content/uploads/elden-ring-title-1024x536.webp" alt="Elden Ring" loading="lazy" />
-          <div class="gallery-caption">Elden Ring</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://www.nintendo.com/eu/media/images/other_22/character_hubs/the_legend_of_zelda/16x9_Other_TheLegendOfZelda_Hub_image1600w.jpg" alt="Zelda TOTK" loading="lazy" />
-          <div class="gallery-caption">Zelda: TOTK</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://cdn.wccftech.com/wp-content/uploads/2023/02/WCCFresidentevil4remake14-1456x819.jpg" alt="RE4 Remake" loading="lazy" />
-          <div class="gallery-caption">Resident Evil 4 Remake</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://s1.ppllstatics.com/elcorreo/www/multimedia/202112/05/media/cortadas/halo-infinite-kT0E-U160172780166saH-1248x770@El%20Correo.jpg" alt="Halo Infinite" loading="lazy" />
-          <div class="gallery-caption">Halo Infinite</div>
-        </div>
-      </div>
-
-      <div class="media-grid">
-        <div class="media-block">
-          <h3>
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
-              <polygon points="23 7 16 12 23 17 23 7"></polygon>
-              <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-            </svg>
-            Tráiler Destacado
-          </h3>
-          <div class="video-wrapper">
-            <iframe
-                    src="https://www.youtube-nocookie.com/embed/c80dVYcL69E"
-                    title="Counter-Strike 2 - Tráiler de lanzamiento oficial"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-      </div>
-      <br>
-
-      <div class="media-block">
-        <h3>
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
-            <path d="M9 18V5l12-2v13"></path>
-            <circle cx="6" cy="18" r="3"></circle>
-            <circle cx="18" cy="16" r="3"></circle>
-          </svg>
-          Banda Sonora Destacada
-        </h3>
-        <div class="audio-section">
-
-          <div class="audio-item">
-            <p><strong>Minecraft</strong> – Sweden (C418)</p>
-            <audio controls>
-              <source src="audio/C418.mp3" type="audio/mpeg">
-            </audio>
-          </div>
-
-          <div class="audio-item">
-            <p><strong>GTA V</strong> – Welcome To Los Santos</p>
-            <audio controls>
-              <source src="audio/GTAVSoundtrack.mp3" type="audio/mpeg">
-            </audio>
-          </div>
-
-          <div class="audio-item">
-            <p><strong>Halo</strong> – Mjolnir Mix (Main Theme)</p>
-            <audio controls>
-              <source src="audio/CS2Soundtrack.mp3" type="audio/mpeg">
-            </audio>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <hr class="full-divider" />
-
-  <section id="formulario">
-    <div class="section-header">
-      <span class="section-label">// CONTÁCTANOS</span>
-      <h2>¿Tienes alguna consulta?</h2>
-      <p>Escríbenos y te respondemos en menos de 24 horas.</p>
-    </div>
-
-    <div class="form-wrapper">
-      <form id="contact-form" action="#" method="POST" novalidate>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nombre">Nombre <span class="required">*</span></label>
-            <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    placeholder="Tu nombre"
-                    required
-                    minlength="2"
-                    maxlength="50"
-            />
-            <span class="form-hint">Mínimo 2 caracteres</span>
-            <span class="form-error"></span>
-          </div>
-          <div class="form-group">
-            <label for="apellido">Apellido <span class="required">*</span></label>
-            <input
-                    type="text"
-                    id="apellido"
-                    name="apellido"
-                    placeholder="Tu apellido"
-                    required
-                    minlength="2"
-                    maxlength="50"
-            />
-            <span class="form-error"></span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Correo electrónico <span class="required">*</span></label>
-          <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="ejemplo@correo.com"
-                  required
-          />
-          <span class="form-hint">Usaremos este correo para responderte</span>
-          <span class="form-error"></span>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="telefono">Teléfono</label>
-            <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    placeholder="+51 999 999 999"
-                    pattern="[+]?[0-9\s\-]{7,15}"
-            />
-          </div>
-          <div class="form-group">
-            <label for="plataforma">Plataforma favorita</label>
-            <select id="plataforma" name="plataforma">
-              <option value="" disabled selected>Selecciona una</option>
-              <option value="ps5">PlayStation 5</option>
-              <option value="xbox">Xbox Series X/S</option>
-              <option value="switch">Nintendo Switch</option>
-              <option value="pc">PC / Steam</option>
-              <option value="movil">Móvil</option>
-            </select>
-            <p class="platform-msg" id="platform-msg"></p>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="mensaje">Mensaje <span class="required">*</span></label>
-          <textarea
-                  id="mensaje"
-                  name="mensaje"
-                  placeholder="Escribe tu consulta aquí..."
-                  required
-                  minlength="10"
-                  maxlength="500"
-          ></textarea>
-          <span class="form-hint">Entre 10 y 500 caracteres</span>
-          <span class="form-error"></span>
-        </div>
-
-        <div class="form-check">
-          <input type="checkbox" id="newsletter" name="newsletter" />
-          <label for="newsletter">
-            Quiero recibir novedades y ofertas exclusivas de PixelVault por correo electrónico.
-          </label>
-        </div>
-        <button type="submit" class="btn-submit">
-          Enviar mensaje
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 8px;">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </button>
-      </form>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#inicio" class="logo">
-        <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 6px;">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-        </svg>
-        Pixel<span>Vault</span>
-      </a>
-      <p>Tu tienda de confianza para videojuegos físicos y digitales. Envíos a todo el Perú.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Tienda</h4>
-      <ul>
+      <ul class="nav-links" id="desktop-nav">
+        <li><a href="#inicio">Inicio</a></li>
         <li><a href="#catalogo">Catálogo</a></li>
         <li><a href="#tabla">Precios</a></li>
-        <li><a href="#">Ofertas</a></li>
-        <li><a href="#">Preventa</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Plataformas</h4>
-      <ul>
-        <li><a href="#">PlayStation</a></li>
-        <li><a href="#">Xbox</a></li>
-        <li><a href="#">Nintendo</a></li>
-        <li><a href="#">PC / Steam</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Soporte</h4>
-      <ul>
+        <li><a href="#multimedia">Multimedia</a></li>
         <li><a href="#formulario">Contacto</a></li>
-        <li><a href="#">Devoluciones</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#" id="terms-link">Términos y Condiciones</a></li>
       </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; <span id="current-year"></span> PixelVault. Todos los derechos reservados.</p>
-    <p>Taller de <a href="#">Programación Web – UTP</a></p>
-  </div>
-</footer>
 
-<div class="toast" id="toast"></div>
+      <div class="nav-actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </button>
 
-<button class="cart-float" id="cart-float-btn" type="button" aria-label="Ver carrito de compras">
-  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="9" cy="21" r="1"></circle>
-    <circle cx="20" cy="21" r="1"></circle>
-    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-  </svg>
-  <span class="cart-badge" id="cart-badge">0</span>
-</button>
+        <button class="account-button account-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>Iniciar sesión</span>
+        </button>
 
-<div class="modal-overlay" id="modal-details" aria-hidden="true">
-  <div class="modal modal-details-box" role="dialog" aria-modal="true" aria-labelledby="modal-details-title">
-    <button class="modal-close" type="button" data-close-modal aria-label="Cerrar ventana">&times;</button>
-    <div class="modal-media">
-      <img id="modal-details-img" src="" alt="" />
-    </div>
-    <div class="modal-content">
-      <p class="modal-tag" id="modal-details-platform">PLATAFORMA</p>
-      <h3 id="modal-details-title">Título del juego</h3>
-      <p class="modal-meta" id="modal-details-meta">Género · Desarrollador · Año</p>
-      <p class="modal-desc" id="modal-details-desc">Descripción del juego.</p>
-      <div class="modal-footer-row">
-        <span class="modal-price" id="modal-details-price">S/. 0</span>
-        <button class="btn-secondary" type="button" data-close-modal>Cerrar</button>
+        <button class="cart-button" id="cart-header-btn" type="button" aria-label="Abrir carrito">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 7H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1" fill="currentColor"/><circle cx="18" cy="20" r="1" fill="currentColor"/></svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+
+        <button class="menu-button" id="menu" type="button" aria-label="Abrir menú" aria-controls="mobile-menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <div class="container mobile-menu-inner">
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#tabla">Precios</a>
+        <a href="#multimedia">Multimedia</a>
+        <a href="#formulario">Contacto</a>
+        <button class="mobile-account account-btn" type="button">Iniciar sesión</button>
       </div>
     </div>
-  </div>
-</div>
+  </header>
 
-<div class="modal-overlay" id="modal-terms" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-terms-title">
-    <button class="modal-close" type="button" data-close-modal aria-label="Cerrar ventana">&times;</button>
-    <div class="modal-content">
-      <h3 id="modal-terms-title">Términos y Condiciones</h3>
-      <div class="modal-scroll">
-        <h4>1. Sobre tu cuenta</h4>
-        <p>Al registrarte en PixelVault aceptas brindar información verídica y eres responsable de la actividad realizada desde tu cuenta.</p>
-        <h4>2. Compras y precios</h4>
-        <p>Los precios se muestran en soles (S/.) e incluyen impuestos de ley. PixelVault se reserva el derecho de modificar precios y disponibilidad sin previo aviso.</p>
-        <h4>3. Entrega de claves digitales</h4>
-        <p>Las claves digitales se envían al correo registrado dentro de las 24 horas posteriores a la confirmación del pago.</p>
-        <h4>4. Devoluciones</h4>
-        <p>Por tratarse de contenido digital, las devoluciones solo aplican en caso de error de compra, antes de que la clave haya sido canjeada.</p>
-        <h4>5. Uso aceptable</h4>
-        <p>Está prohibido el uso de la plataforma para reventa no autorizada o actividades fraudulentas relacionadas con los productos adquiridos.</p>
+  <main id="contenido">
+    <section class="hero" id="inicio" data-nav-section>
+      <div class="hero-grid container">
+        <div class="hero-copy reveal">
+          <span class="eyebrow"><span class="status-dot"></span> Temporada gamer 2026</span>
+          <h1>Tu próxima aventura está dentro de <span>PixelVault</span></h1>
+          <p class="hero-description">Descubre títulos para PC, PlayStation, Xbox y Nintendo en una experiencia rápida, segura y diseñada para jugadores.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalogo">Explorar catálogo
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="button button-secondary" href="#multimedia">Ver experiencia</a>
+          </div>
+          <div class="hero-metrics" aria-label="Indicadores de servicio">
+            <div><strong>+120</strong><span>Títulos disponibles</span></div>
+            <div><strong>24 h</strong><span>Entrega digital</span></div>
+            <div><strong>4.9/5</strong><span>Valoración gamer</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Vista previa de PixelVault">
+          <div class="visual-glow"></div>
+          <div class="experience-card">
+            <div class="experience-topbar">
+              <div class="window-dots"><span></span><span></span><span></span></div>
+              <span>PIXELVAULT.EXE</span>
+              <span class="live-label">ONLINE</span>
+            </div>
+            <div class="experience-content">
+              <div class="featured-cover">
+                <img src="https://gaming-cdn.com/images/products/9459/orig/counter-strike-2-pc-mac-juego-steam-cover.jpg?v=1742208833" alt="Portada destacada de Counter-Strike 2">
+                <span class="cover-tag">Destacado</span>
+              </div>
+              <div class="featured-info">
+                <p class="micro-label">SELECCIÓN DE LA SEMANA</p>
+                <h2>Counter-Strike 2</h2>
+                <p>Competición táctica renovada, partidas intensas y una comunidad global activa.</p>
+                <div class="rating-row"><span>★★★★★</span><small>4.9 · 2,846 reseñas</small></div>
+                <div class="featured-bottom"><strong>S/. 58</strong><button class="quick-add" type="button" data-quick-add="cs2">Agregar</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-chip chip-one"><span>⚡</span> Entrega rápida</div>
+          <div class="floating-chip chip-two"><span>✓</span> Compra segura</div>
+        </div>
       </div>
-      <div class="modal-footer-row modal-footer-end">
-        <button class="btn-secondary" type="button" data-close-modal>Entendido</button>
+    </section>
+
+    <section class="trust-bar" aria-label="Ventajas del servicio">
+      <div class="container trust-grid">
+        <div><span class="trust-icon">01</span><p><strong>Compra protegida</strong><small>Proceso claro y seguro</small></p></div>
+        <div><span class="trust-icon">02</span><p><strong>Atención directa</strong><small>Respuesta en menos de 24 h</small></p></div>
+        <div><span class="trust-icon">03</span><p><strong>Multiplataforma</strong><small>PC, Xbox, PS5 y Nintendo</small></p></div>
+        <div><span class="trust-icon">04</span><p><strong>Ofertas reales</strong><small>Cupones y promociones</small></p></div>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<div class="modal-overlay" id="modal-cart" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-cart-title">
-    <button class="modal-close" type="button" data-close-modal aria-label="Cerrar ventana">&times;</button>
-    <div class="modal-content">
-      <h3 id="modal-cart-title">Tu Carrito</h3>
-
-      <div class="cart-items" id="cart-items-list">
-        <p class="cart-empty">Tu carrito está vacío.</p>
-      </div>
-
-      <div class="cart-coupon" id="cart-coupon-msg"></div>
-
-      <div class="cart-summary">
+    <section class="section container" id="catalogo" data-nav-section>
+      <div class="section-heading reveal">
         <div>
-          <button class="btn-secondary btn-coupon" type="button" id="apply-coupon-btn">Aplicar cupón</button>
-          <p class="cart-hint">Código de prueba: <strong>PIXEL10</strong> (10% dscto.)</p>
+          <span class="section-kicker">Catálogo seleccionado</span>
+          <h2>Encuentra tu próximo juego</h2>
         </div>
-        <div class="cart-total-row">
-          <span>Total:</span>
-          <span class="cart-total" id="cart-total">S/. 0</span>
-        </div>
+        <p>Filtra por plataforma, busca por nombre y ordena los resultados sin recargar la página.</p>
       </div>
 
-      <button class="btn-submit" type="button" id="checkout-btn">Finalizar compra</button>
+      <div class="catalog-toolbar reveal">
+        <label class="search-field" for="game-search">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input id="game-search" type="search" placeholder="Buscar un juego..." autocomplete="off">
+        </label>
+        <label class="select-field" for="platform-filter">
+          <span>Plataforma</span>
+          <select id="platform-filter">
+            <option value="all">Todas</option>
+            <option value="pc">PC / Steam</option>
+            <option value="xbox">Xbox</option>
+            <option value="nintendo">Nintendo</option>
+            <option value="playstation">PlayStation</option>
+          </select>
+        </label>
+        <label class="select-field" for="sort-games">
+          <span>Ordenar</span>
+          <select id="sort-games">
+            <option value="featured">Destacados</option>
+            <option value="price-asc">Menor precio</option>
+            <option value="price-desc">Mayor precio</option>
+            <option value="name">Nombre A-Z</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="catalog-meta reveal">
+        <p id="results-count" aria-live="polite">6 juegos encontrados</p>
+        <button class="text-button" id="reset-filters" type="button">Limpiar filtros</button>
+      </div>
+
+      <div class="games-grid" id="games-grid"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <span>⌕</span>
+        <h3>No encontramos coincidencias</h3>
+        <p>Prueba con otro nombre o cambia el filtro de plataforma.</p>
+      </div>
+    </section>
+
+    <section class="section section-surface" id="tabla" data-nav-section>
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="section-kicker">Información transparente</span>
+            <h2>Precios y disponibilidad</h2>
+          </div>
+          <p>Comparación rápida de todos los títulos del catálogo, actualizada para la temporada 2026.</p>
+        </div>
+        <div class="table-card reveal">
+          <div class="table-scroll">
+            <table>
+              <caption>Catálogo PixelVault · Precios expresados en soles</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Juego</th>
+                  <th scope="col">Género</th>
+                  <th scope="col">Plataforma</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Disponibilidad</th>
+                </tr>
+              </thead>
+              <tbody id="comparison-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="multimedia" data-nav-section>
+      <div class="section-heading reveal">
+        <div>
+          <span class="section-kicker">Contenido inmersivo</span>
+          <h2>Galería multimedia</h2>
+        </div>
+        <p>Explora capturas, un tráiler destacado y bandas sonoras seleccionadas.</p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <figure class="gallery-item gallery-large"><img src="https://gaming-cdn.com/images/products/9459/orig/counter-strike-2-pc-mac-juego-steam-cover.jpg?v=1742208833" alt="Counter-Strike 2" loading="lazy"><figcaption>Counter-Strike 2</figcaption></figure>
+        <figure class="gallery-item"><img src="https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png" alt="God of War Ragnarök" loading="lazy"><figcaption>God of War Ragnarök</figcaption></figure>
+        <figure class="gallery-item"><img src="https://www.allkeyshop.com/blog/wp-content/uploads/elden-ring-title-1024x536.webp" alt="Elden Ring" loading="lazy"><figcaption>Elden Ring</figcaption></figure>
+        <figure class="gallery-item"><img src="https://www.nintendo.com/eu/media/images/other_22/character_hubs/the_legend_of_zelda/16x9_Other_TheLegendOfZelda_Hub_image1600w.jpg" alt="The Legend of Zelda" loading="lazy"><figcaption>Zelda: TOTK</figcaption></figure>
+        <figure class="gallery-item"><img src="https://cdn.wccftech.com/wp-content/uploads/2023/02/WCCFresidentevil4remake14-1456x819.jpg" alt="Resident Evil 4 Remake" loading="lazy"><figcaption>Resident Evil 4 Remake</figcaption></figure>
+        <figure class="gallery-item"><img src="https://s1.ppllstatics.com/elcorreo/www/multimedia/202112/05/media/cortadas/halo-infinite-kT0E-U160172780166saH-1248x770@El%20Correo.jpg" alt="Halo Infinite" loading="lazy"><figcaption>Halo Infinite</figcaption></figure>
+      </div>
+
+      <div class="media-layout">
+        <article class="media-panel reveal">
+          <div class="panel-heading"><span class="panel-icon">▶</span><div><span>Video</span><h3>Tráiler destacado</h3></div></div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/c80dVYcL69E" title="Counter-Strike 2 - Tráiler de lanzamiento oficial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+          </div>
+        </article>
+
+        <article class="media-panel reveal">
+          <div class="panel-heading"><span class="panel-icon">♫</span><div><span>Audio</span><h3>Bandas sonoras</h3></div></div>
+          <div class="audio-list">
+            <div class="audio-item"><div><strong>Minecraft</strong><span>Sweden · C418</span></div><audio controls preload="none"><source src="audio/C418.mp3" type="audio/mpeg"></audio></div>
+            <div class="audio-item"><div><strong>GTA V</strong><span>Welcome To Los Santos</span></div><audio controls preload="none"><source src="audio/GTAVSoundtrack.mp3" type="audio/mpeg"></audio></div>
+            <div class="audio-item"><div><strong>Halo</strong><span>Mjolnir Mix · Main Theme</span></div><audio controls preload="none"><source src="audio/CS2Soundtrack.mp3" type="audio/mpeg"></audio></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-surface" id="experiencia">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="section-kicker">Diseñado para el usuario</span>
+            <h2>Una experiencia completa</h2>
+          </div>
+          <p>Cada interacción fue pensada para que navegar, comparar y comprar sea simple desde cualquier dispositivo.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card reveal"><span>01</span><h3>Navegación responsiva</h3><p>Menú adaptable con botón hamburguesa, estados accesibles y cierre automático.</p></article>
+          <article class="feature-card reveal"><span>02</span><h3>Catálogo interactivo</h3><p>Búsqueda, filtros, ordenamiento y detalles dinámicos usando manipulación del DOM.</p></article>
+          <article class="feature-card reveal"><span>03</span><h3>Carrito persistente</h3><p>Productos, cantidades, cupones y sesiones se conservan mediante localStorage.</p></article>
+          <article class="feature-card reveal"><span>04</span><h3>Validación en tiempo real</h3><p>Los formularios orientan al usuario con mensajes claros antes de enviar información.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="formulario" data-nav-section>
+      <div class="contact-layout">
+        <div class="contact-copy reveal">
+          <span class="section-kicker">Hablemos</span>
+          <h2>¿Necesitas ayuda para elegir?</h2>
+          <p>Cuéntanos qué plataforma usas y qué tipo de experiencia buscas. Nuestro equipo responderá en menos de 24 horas.</p>
+          <div class="contact-points">
+            <div><span>✓</span><p><strong>Asesoría personalizada</strong><small>Recomendaciones según tus preferencias.</small></p></div>
+            <div><span>✓</span><p><strong>Respuesta rápida</strong><small>Atención directa y sin procesos complicados.</small></p></div>
+            <div><span>✓</span><p><strong>Soporte postventa</strong><small>Acompañamiento después de tu compra.</small></p></div>
+          </div>
+        </div>
+
+        <div class="form-card reveal">
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group"><label for="nombre">Nombre <span>*</span></label><input id="nombre" name="nombre" type="text" placeholder="Tu nombre" minlength="2" maxlength="50" autocomplete="given-name" required><small class="form-error"></small></div>
+              <div class="form-group"><label for="apellido">Apellido <span>*</span></label><input id="apellido" name="apellido" type="text" placeholder="Tu apellido" minlength="2" maxlength="50" autocomplete="family-name" required><small class="form-error"></small></div>
+            </div>
+            <div class="form-group"><label for="email">Correo electrónico <span>*</span></label><input id="email" name="email" type="email" placeholder="nombre@correo.com" autocomplete="email" required><small class="form-error"></small></div>
+            <div class="form-row">
+              <div class="form-group"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" placeholder="+51 999 999 999" autocomplete="tel" pattern="[+]?[0-9\s-]{7,15}"><small class="form-error"></small></div>
+              <div class="form-group"><label for="plataforma">Plataforma favorita</label><select id="plataforma" name="plataforma"><option value="">Selecciona una</option><option value="ps5">PlayStation 5</option><option value="xbox">Xbox Series X/S</option><option value="switch">Nintendo Switch</option><option value="pc">PC / Steam</option><option value="movil">Móvil</option></select><small class="platform-msg" id="platform-msg"></small></div>
+            </div>
+            <div class="form-group"><div class="label-row"><label for="mensaje">Mensaje <span>*</span></label><small id="message-counter">0/500</small></div><textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué estás buscando..." minlength="10" maxlength="500" required></textarea><small class="form-error"></small></div>
+            <label class="checkbox-field"><input id="newsletter" name="newsletter" type="checkbox"><span>Quiero recibir novedades y ofertas exclusivas.</span></label>
+            <button class="button button-primary button-full" type="submit">Enviar consulta<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M22 2 11 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12a4 4 0 0 1 4 4v5a3 3 0 0 1-5.12 2.12L15 17.25H9l-1.88 1.87A3 3 0 0 1 2 17v-5a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.8"/><path d="M7 11v4M5 13h4M16.5 12h.01M19 14h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Pixel<span>Vault</span></span></a>
+        <p>Una tienda gamer creada como proyecto final de HTML, CSS y JavaScript.</p>
+      </div>
+      <div class="footer-column"><h3>Navegación</h3><a href="#catalogo">Catálogo</a><a href="#tabla">Precios</a><a href="#multimedia">Multimedia</a><a href="#formulario">Contacto</a></div>
+      <div class="footer-column"><h3>Plataformas</h3><a href="#catalogo">PlayStation</a><a href="#catalogo">Xbox</a><a href="#catalogo">Nintendo</a><a href="#catalogo">PC / Steam</a></div>
+      <div class="footer-column"><h3>Soporte</h3><a href="#formulario">Centro de ayuda</a><a href="#formulario">Devoluciones</a><a href="#formulario">Preguntas frecuentes</a><a href="#" id="terms-link">Términos y condiciones</a></div>
+    </div>
+    <div class="container footer-bottom"><p>© <span id="current-year"></span> PixelVault. Todos los derechos reservados.</p><p>Proyecto de Programación Web · UTP</p></div>
+  </footer>
+
+  <button class="floating-cart" id="cart-float-btn" type="button" aria-label="Abrir carrito"><svg viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.6L21 7H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="20" r="1" fill="currentColor"/><circle cx="18" cy="20" r="1" fill="currentColor"/></svg><span class="cart-badge" id="cart-float-badge">0</span></button>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Volver arriba">↑</button>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="modal-overlay" id="modal-details" aria-hidden="true">
+    <div class="modal modal-details" role="dialog" aria-modal="true" aria-labelledby="modal-details-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button>
+      <div class="details-image"><img id="modal-details-img" src="" alt=""></div>
+      <div class="modal-content">
+        <span class="modal-tag" id="modal-details-platform"></span>
+        <h2 id="modal-details-title"></h2>
+        <p class="modal-meta" id="modal-details-meta"></p>
+        <p class="modal-description" id="modal-details-desc"></p>
+        <div class="modal-action-row"><strong class="modal-price" id="modal-details-price"></strong><button class="button button-primary" id="details-add-btn" type="button">Agregar al carrito</button></div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="modal-overlay" id="modal-login" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-login-title">
-    <button class="modal-close" type="button" data-close-modal aria-label="Cerrar ventana">&times;</button>
-    <div class="modal-content">
-      <h3 id="modal-login-title">Iniciar sesión</h3>
-      <p class="modal-subtitle">Accede para ver tu carrito, compras y cupones guardados.</p>
-
-      <form id="login-form" novalidate>
-        <div class="form-group">
-          <label for="login-email">Correo electrónico <span class="required">*</span></label>
-          <input type="email" id="login-email" placeholder="tu@correo.com" required />
-          <span class="form-error"></span>
-        </div>
-        <div class="form-group">
-          <label for="login-password">Contraseña <span class="required">*</span></label>
-          <input type="password" id="login-password" placeholder="••••••••" required minlength="6" />
-          <span class="form-error"></span>
-        </div>
-        <button type="submit" class="btn-submit">Entrar</button>
-      </form>
-
-      <p class="modal-switch">
-        ¿No tienes cuenta?
-        <a href="#" id="go-to-register">Regístrate aquí</a>
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="modal-register" aria-hidden="true">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-register-title">
-    <button class="modal-close" type="button" data-close-modal aria-label="Cerrar ventana">&times;</button>
-    <div class="modal-content">
-      <h3 id="modal-register-title">Crear cuenta</h3>
-      <p class="modal-subtitle">Regístrate para guardar tu carrito y llevar tu historial de compras.</p>
-
-      <form id="register-form" novalidate>
-        <div class="form-group">
-          <label for="register-email">Correo electrónico <span class="required">*</span></label>
-          <input type="email" id="register-email" placeholder="tu@correo.com" required />
-          <span class="form-error"></span>
-        </div>
-        <div class="form-group">
-          <label for="register-password">Contraseña <span class="required">*</span></label>
-          <input type="password" id="register-password" placeholder="••••••••" required minlength="6" />
-          <span class="form-hint">Mínimo 6 caracteres</span>
-          <span class="form-error"></span>
-        </div>
-        <div class="form-group">
-          <label for="register-password-confirm">Confirmar contraseña <span class="required">*</span></label>
-          <input type="password" id="register-password-confirm" placeholder="••••••••" required minlength="6" />
-          <span class="form-error"></span>
-        </div>
-        <button type="submit" class="btn-submit">Crear cuenta</button>
-      </form>
-
-      <p class="modal-switch">
-        ¿Ya tienes cuenta?
-        <a href="#" id="go-to-login">Inicia sesión aquí</a>
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="modal-dashboard" aria-hidden="true">
-  <div class="modal modal-dashboard-box" role="dialog" aria-modal="true" aria-labelledby="modal-dashboard-title">
-    <button class="modal-close" type="button" data-close-modal aria-label="Cerrar ventana">&times;</button>
-    <div class="modal-content">
-      <h3 id="modal-dashboard-title">Mi Perfil</h3>
-      <p class="modal-subtitle" id="dashboard-email">correo@ejemplo.com</p>
-
-      <div class="dashboard-tabs">
-        <button class="dashboard-tab active" type="button" data-tab="cuenta">Cuenta</button>
-        <button class="dashboard-tab" type="button" data-tab="compras">Compras</button>
-        <button class="dashboard-tab" type="button" data-tab="cupones">Cupones</button>
-        <button class="dashboard-tab" type="button" data-tab="devoluciones">Devoluciones</button>
-      </div>
-
-      <div class="dashboard-panel active" data-panel="cuenta">
-        <p class="dashboard-row"><strong>Correo:</strong> <span id="dashboard-info-email"></span></p>
-        <p class="dashboard-row"><strong>Miembro desde:</strong> <span id="dashboard-info-since"></span></p>
-        <button class="btn-secondary btn-logout" type="button" id="logout-btn">Cerrar sesión</button>
-      </div>
-
-      <div class="dashboard-panel" data-panel="compras">
-        <div id="dashboard-purchases-list"></div>
-      </div>
-
-      <div class="dashboard-panel" data-panel="cupones">
-        <div id="dashboard-coupons-list"></div>
-      </div>
-
-      <div class="dashboard-panel" data-panel="devoluciones">
-        <div id="dashboard-returns-list"></div>
+  <div class="modal-overlay" id="modal-cart" aria-hidden="true">
+    <div class="modal modal-cart" role="dialog" aria-modal="true" aria-labelledby="modal-cart-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button>
+      <div class="modal-content">
+        <div class="modal-title-row"><div><span class="section-kicker">Tu selección</span><h2 id="modal-cart-title">Carrito de compras</h2></div><span class="cart-items-counter" id="cart-items-counter">0 productos</span></div>
+        <div class="cart-items" id="cart-items-list"></div>
+        <div class="coupon-box"><label for="coupon-code">Código de descuento</label><div><input id="coupon-code" type="text" placeholder="Ejemplo: PIXEL10" maxlength="12"><button class="button button-secondary" id="apply-coupon-btn" type="button">Aplicar</button></div><small id="cart-coupon-msg"></small></div>
+        <div class="cart-summary"><div><span>Subtotal</span><strong id="cart-subtotal">S/. 0.00</strong></div><div><span>Descuento</span><strong id="cart-discount">- S/. 0.00</strong></div><div class="cart-total-row"><span>Total</span><strong id="cart-total">S/. 0.00</strong></div></div>
+        <button class="button button-primary button-full" id="checkout-btn" type="button">Finalizar compra</button>
       </div>
     </div>
   </div>
-</div>
 
-<script src="script.js"></script>
+  <div class="modal-overlay" id="modal-login" aria-hidden="true">
+    <div class="modal modal-auth" role="dialog" aria-modal="true" aria-labelledby="modal-login-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button>
+      <div class="modal-content">
+        <span class="section-kicker">Bienvenido nuevamente</span><h2 id="modal-login-title">Iniciar sesión</h2><p class="modal-description">Accede a tu carrito, compras, cupones y devoluciones.</p>
+        <form id="login-form" novalidate>
+          <div class="form-group"><label for="login-email">Correo electrónico</label><input id="login-email" type="email" placeholder="nombre@correo.com" autocomplete="username" required><small class="form-error"></small></div>
+          <div class="form-group"><label for="login-password">Contraseña</label><div class="password-field"><input id="login-password" type="password" placeholder="Mínimo 6 caracteres" autocomplete="current-password" minlength="6" required><button class="password-toggle" type="button" data-password-target="login-password" aria-label="Mostrar contraseña">Ver</button></div><small class="form-error"></small></div>
+          <button class="button button-primary button-full" type="submit">Ingresar</button>
+        </form>
+        <p class="modal-switch">¿Aún no tienes cuenta? <a href="#" id="go-to-register">Crear cuenta</a></p>
+      </div>
+    </div>
+  </div>
 
+  <div class="modal-overlay" id="modal-register" aria-hidden="true">
+    <div class="modal modal-auth" role="dialog" aria-modal="true" aria-labelledby="modal-register-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button>
+      <div class="modal-content">
+        <span class="section-kicker">Únete a PixelVault</span><h2 id="modal-register-title">Crear una cuenta</h2><p class="modal-description">Regístrate para guardar tu carrito y consultar tu historial.</p>
+        <form id="register-form" novalidate>
+          <div class="form-group"><label for="register-email">Correo electrónico</label><input id="register-email" type="email" placeholder="nombre@correo.com" autocomplete="username" required><small class="form-error"></small></div>
+          <div class="form-group"><label for="register-password">Contraseña</label><div class="password-field"><input id="register-password" type="password" placeholder="Mínimo 6 caracteres" autocomplete="new-password" minlength="6" required><button class="password-toggle" type="button" data-password-target="register-password" aria-label="Mostrar contraseña">Ver</button></div><small class="form-error"></small></div>
+          <div class="form-group"><label for="register-password-confirm">Confirmar contraseña</label><div class="password-field"><input id="register-password-confirm" type="password" placeholder="Repite tu contraseña" autocomplete="new-password" minlength="6" required><button class="password-toggle" type="button" data-password-target="register-password-confirm" aria-label="Mostrar contraseña">Ver</button></div><small class="form-error"></small></div>
+          <button class="button button-primary button-full" type="submit">Crear cuenta</button>
+        </form>
+        <p class="modal-switch">¿Ya tienes cuenta? <a href="#" id="go-to-login">Iniciar sesión</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-dashboard" aria-hidden="true">
+    <div class="modal modal-dashboard" role="dialog" aria-modal="true" aria-labelledby="modal-dashboard-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button>
+      <div class="modal-content">
+        <div class="dashboard-header"><div class="dashboard-avatar" id="dashboard-avatar">PV</div><div><span class="section-kicker">Panel personal</span><h2 id="modal-dashboard-title">Mi perfil</h2><p id="dashboard-email"></p></div></div>
+        <div class="dashboard-tabs" role="tablist" aria-label="Secciones del perfil"><button class="dashboard-tab active" type="button" role="tab" data-tab="cuenta" aria-selected="true">Cuenta</button><button class="dashboard-tab" type="button" role="tab" data-tab="compras" aria-selected="false">Compras</button><button class="dashboard-tab" type="button" role="tab" data-tab="cupones" aria-selected="false">Cupones</button><button class="dashboard-tab" type="button" role="tab" data-tab="devoluciones" aria-selected="false">Devoluciones</button></div>
+        <div class="dashboard-panel active" data-panel="cuenta"><div class="account-summary"><div><span>Correo</span><strong id="dashboard-info-email"></strong></div><div><span>Miembro desde</span><strong id="dashboard-info-since"></strong></div></div><button class="button button-danger" id="logout-btn" type="button">Cerrar sesión</button></div>
+        <div class="dashboard-panel" data-panel="compras"><div id="dashboard-purchases-list"></div></div>
+        <div class="dashboard-panel" data-panel="cupones"><div id="dashboard-coupons-list"></div></div>
+        <div class="dashboard-panel" data-panel="devoluciones"><div id="dashboard-returns-list"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-terms" aria-hidden="true">
+    <div class="modal modal-terms" role="dialog" aria-modal="true" aria-labelledby="modal-terms-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Cerrar">×</button>
+      <div class="modal-content"><span class="section-kicker">Información legal</span><h2 id="modal-terms-title">Términos y condiciones</h2><div class="terms-scroll"><h3>1. Cuenta de usuario</h3><p>El usuario es responsable de brindar información correcta y proteger sus credenciales de acceso.</p><h3>2. Compras y precios</h3><p>Los precios se expresan en soles y pueden variar según disponibilidad o promociones vigentes.</p><h3>3. Entrega digital</h3><p>Las claves digitales se envían al correo registrado después de confirmar el pago.</p><h3>4. Devoluciones</h3><p>Las devoluciones aplican cuando existe un error de compra y la clave aún no fue utilizada.</p><h3>5. Uso de la plataforma</h3><p>No está permitido utilizar PixelVault para reventa no autorizada o actividades fraudulentas.</p></div><button class="button button-primary button-full" type="button" data-close-modal>Entendido</button></div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
